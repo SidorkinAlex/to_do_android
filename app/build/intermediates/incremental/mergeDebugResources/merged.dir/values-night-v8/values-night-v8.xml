@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
+    <style name="MaterialTheme.ActionBar.DayNight" parent="MaterialTheme.ActionBar"/>
+    <style name="MaterialTheme.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.ActionBar.TranslucentStatus"/>
+    <style name="MaterialTheme.DarkToolbar.ActionBar.DayNight" parent="MaterialTheme.ActionBar"/>
+    <style name="MaterialTheme.DarkToolbar.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.ActionBar.TranslucentStatus"/>
+    <style name="MaterialTheme.DarkToolbar.DayNight" parent="MaterialTheme"/>
+    <style name="MaterialTheme.DarkToolbar.TranslucentStatus.DayNight" parent="MaterialTheme.TranslucentStatus"/>
+    <style name="MaterialTheme.DayNight" parent="MaterialTheme"/>
+    <style name="MaterialTheme.TranslucentStatus.DayNight" parent="MaterialTheme.TranslucentStatus"/>
     <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat"/>
     <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat"/>
     <style name="Theme.AppCompat.DayNight.Dialog" parent="Theme.AppCompat.Dialog"/>
@@ -23,7 +31,7 @@
     <style name="Theme.MaterialComponents.DayNight.DialogWhenLarge" parent="Theme.MaterialComponents.DialogWhenLarge"/>
     <style name="Theme.MaterialComponents.DayNight.NoActionBar" parent="Theme.MaterialComponents.NoActionBar"/>
     <style name="Theme.MaterialComponents.DayNight.NoActionBar.Bridge" parent="Theme.MaterialComponents.NoActionBar.Bridge"/>
-    <style name="Theme.ToDoCHecklist" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ToDo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

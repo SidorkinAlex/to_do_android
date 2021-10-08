@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="suitecrm.com.todochecklist"
+3    package="suitecrm.com.todo"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -15,7 +15,7 @@
 12        android:allowBackup="true"
 12-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.6.0] /home/alex/.gradle/caches/transforms-2/files-2.1/2b3e2527d8ed70c72a0a44c9c453de57/core-1.6.0/AndroidManifest.xml:24:18-86
+13-->[androidx.core:core:1.6.0] /home/alex/.gradle/caches/transforms-2/files-2.1/484149b92a13ecf52e84bfcb35ed7f78/core-1.6.0/AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:extractNativeLibs="false"
 16        android:icon="@mipmap/ic_launcher"
@@ -27,9 +27,9 @@
 19        android:supportsRtl="true"
 19-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:10:9-35
 20        android:testOnly="true"
-21        android:theme="@style/Theme.ToDoCHecklist" >
-21-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:11:9-51
-22        <activity android:name="suitecrm.com.todochecklist.MainActivity" >
+21        android:theme="@style/Theme.ToDo" >
+21-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:11:9-42
+22        <activity android:name="suitecrm.com.todo.MainActivity" >
 22-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:12:9-18:20
 22-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:12:19-47
 23            <intent-filter>
@@ -43,6 +43,19 @@
 26-->/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/AndroidManifest.xml:16:27-74
 27            </intent-filter>
 28        </activity>
-29    </application>
-30
-31</manifest>
+29
+30        <provider
+30-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:27:9-32:39
+31            android:name="com.mikepenz.iconics.IconicsContentProvider"
+31-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:28:13-71
+32            android:authorities="suitecrm.com.todo.iconics.core.provider"
+32-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:29:13-73
+33            android:enabled="@bool/is_iconics_content_provider_enabled"
+33-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:30:13-72
+34            android:exported="false"
+34-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:31:13-37
+35            android:initOrder="100" />
+35-->[com.mikepenz:iconics-core:4.0.2] /home/alex/.gradle/caches/transforms-2/files-2.1/bae55c2204e060eb188aa47146c804a3/jetified-iconics-core-4.0.2/AndroidManifest.xml:32:13-36
+36    </application>
+37
+38</manifest>

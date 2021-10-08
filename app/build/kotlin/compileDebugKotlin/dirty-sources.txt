@@ -1,2 +1,0 @@
-/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/java/suitecrm/com/todochecklist/MainActivity.kt
-/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/java/suitecrm/com/todochecklist/SettingsFragment.kt

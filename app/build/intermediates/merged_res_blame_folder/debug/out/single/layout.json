@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_settings.xml",
+        "source": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/res/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/res/layout/activity_main.xml"
+    }
+]

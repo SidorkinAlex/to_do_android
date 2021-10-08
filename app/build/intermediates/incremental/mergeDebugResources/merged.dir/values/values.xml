@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
-    <attr format="reference" name="animate_relativeTo"/>
+    <attr format="enum" name="animateCircleAngleTo">
+        <enum name="bestChoice" value="0"/>
+        <enum name="closest" value="1"/>
+        <enum name="clockwise" value="2"/>
+        <enum name="antiClockwise" value="3"/>
+        <enum name="constraint" value="4"/>
+    </attr>
+    <attr format="reference" name="animateRelativeTo"/>
     <attr format="reference" name="appBarLayoutStyle"/>
     <attr format="enum" name="arcMode">
         <enum name="startVertical" value="0"/>
@@ -18,6 +25,8 @@
         <enum name="end" value="6"/>
     </attr>
     <attr format="dimension" name="barrierMargin"/>
+    <attr format="dimension" name="borderRound"/>
+    <attr format="float" name="borderRoundPercent"/>
     <attr format="reference" name="bottomAppBarStyle"/>
     <attr format="reference" name="bottomNavigationStyle"/>
     <attr format="reference" name="bottomSheetDialogTheme"/>
@@ -31,6 +40,11 @@
     <attr format="reference" name="chipStyle"/>
     <attr format="dimension" name="circleRadius"/>
     <attr format="reference" name="circularProgressIndicatorStyle"/>
+    <attr format="string" name="circularflow_angles"/>
+    <attr format="float" name="circularflow_defaultAngle"/>
+    <attr format="dimension" name="circularflow_defaultRadius"/>
+    <attr format="string" name="circularflow_radiusInDP"/>
+    <attr format="reference" name="circularflow_viewCenter"/>
     <attr format="reference" name="clockIcon"/>
     <attr format="reference" name="collapsingToolbarLayoutStyle"/>
     <attr name="colorOnBackground"/>
@@ -63,6 +77,8 @@
         <enum name="dragRight" value="3"/>
         <enum name="dragStart" value="4"/>
         <enum name="dragEnd" value="5"/>
+        <enum name="dragClockwise" value="6"/>
+        <enum name="dragAnticlockwise" value="7"/>
     </attr>
     <attr format="enum" name="drawPath">
         <enum name="none" value="0"/>
@@ -73,7 +89,9 @@
         <enum name="rectangles" value="5"/>
     </attr>
     <attr format="reference" name="drawerArrowStyle"/>
+    <attr format="reference" name="drawerLayoutStyle"/>
     <attr format="integer" name="duration"/>
+    <attr format="dimension" name="elevation"/>
     <attr format="color" name="elevationOverlayColor"/>
     <attr format="boolean" name="elevationOverlayEnabled"/>
     <attr format="boolean" name="enableEdgeToEdge"/>
@@ -157,6 +175,12 @@
     <attr format="reference|enum" name="layout_constraintBaseline_toBaselineOf">
         <enum name="parent" value="0"/>
     </attr>
+    <attr format="reference|enum" name="layout_constraintBaseline_toBottomOf">
+        <enum name="parent" value="0"/>
+    </attr>
+    <attr format="reference|enum" name="layout_constraintBaseline_toTopOf">
+        <enum name="parent" value="0"/>
+    </attr>
     <attr format="integer" name="layout_constraintBottom_creator"/>
     <attr format="reference|enum" name="layout_constraintBottom_toBottomOf">
         <enum name="parent" value="0"/>
@@ -165,7 +189,7 @@
         <enum name="parent" value="0"/>
     </attr>
     <attr format="reference" name="layout_constraintCircle"/>
-    <attr format="integer" name="layout_constraintCircleAngle"/>
+    <attr format="float" name="layout_constraintCircleAngle"/>
     <attr format="dimension" name="layout_constraintCircleRadius"/>
     <attr format="string" name="layout_constraintDimensionRatio"/>
     <attr format="reference|enum" name="layout_constraintEnd_toEndOf">
@@ -177,6 +201,12 @@
     <attr format="dimension" name="layout_constraintGuide_begin"/>
     <attr format="dimension" name="layout_constraintGuide_end"/>
     <attr format="float" name="layout_constraintGuide_percent"/>
+    <attr format="dimension|enum|string" name="layout_constraintHeight">
+        <enum name="match_parent" value="-1"/>
+        <enum name="wrap_content" value="-2"/>
+        <enum name="match_constraint" value="-3"/>
+        <enum name="wrap_content_constrained" value="-4"/>
+    </attr>
     <attr name="layout_constraintHeight_default">
         <enum name="spread" value="0"/>
         <enum name="wrap" value="1"/>
@@ -231,6 +261,12 @@
         <enum name="packed" value="2"/>
     </attr>
     <attr format="float" name="layout_constraintVertical_weight"/>
+    <attr format="dimension|enum|string" name="layout_constraintWidth">
+        <enum name="match_parent" value="-1"/>
+        <enum name="wrap_content" value="-2"/>
+        <enum name="match_constraint" value="-3"/>
+        <enum name="wrap_content_constrained" value="-4"/>
+    </attr>
     <attr name="layout_constraintWidth_default">
         <enum name="spread" value="0"/>
         <enum name="wrap" value="1"/>
@@ -245,14 +281,17 @@
     <attr format="float" name="layout_constraintWidth_percent"/>
     <attr format="dimension" name="layout_editor_absoluteX"/>
     <attr format="dimension" name="layout_editor_absoluteY"/>
+    <attr format="dimension" name="layout_goneMarginBaseline"/>
     <attr format="dimension" name="layout_goneMarginBottom"/>
     <attr format="dimension" name="layout_goneMarginEnd"/>
     <attr format="dimension" name="layout_goneMarginLeft"/>
     <attr format="dimension" name="layout_goneMarginRight"/>
     <attr format="dimension" name="layout_goneMarginStart"/>
     <attr format="dimension" name="layout_goneMarginTop"/>
+    <attr format="dimension" name="layout_marginBaseline"/>
     <attr name="layout_optimizationLevel">
         <flag name="none" value="0"/>
+        <flag name="legacy" value="0"/>
         <flag name="standard" value="257"/> <!-- direct, measure caches -->
         <flag name="direct" value="1"/>
         <flag name="barrier" value="2"/>
@@ -265,6 +304,12 @@
         <flag name="cache_measures" value="256"/>
         <flag name="dependency_ordering" value="512"/>
         <flag name="grouping" value="1024"/>
+    </attr>
+    <attr format="enum" name="layout_wrapBehaviorInParent">
+        <enum name="included" value="0"/>
+        <enum name="horizontal_only" value="1"/>
+        <enum name="vertical_only" value="2"/>
+        <enum name="skipped" value="3"/>
     </attr>
     <attr format="reference" name="linearProgressIndicatorStyle"/>
     <attr format="reference" name="materialButtonOutlinedStyle"/>
@@ -313,6 +358,13 @@
     <attr format="reference" name="navigationRailStyle"/>
     <attr format="reference" name="navigationViewStyle"/>
     <attr format="reference" name="nestedScrollViewStyle"/>
+    <attr format="enum" name="onStateTransition">
+        <enum name="actionDown" value="1"/>
+        <enum name="actionUp" value="2"/>
+        <enum name="actionDownUp" value="3"/>
+        <enum name="sharedValueSet" value="4"/>
+        <enum name="sharedValueUnset" value="5"/>
+    </attr>
     <attr format="enum" name="pathMotionArc">
         <enum name="none" value="0"/>
         <enum name="startVertical" value="1"/>
@@ -329,7 +381,18 @@
         <enum name="invisible" value="4"/>
         <enum name="gone" value="8"/>
     </attr>
+    <attr format="reference" name="polarRelativeTo"/>
     <attr format="reference" name="popupMenuBackground"/>
+    <attr format="string|reference|enum" name="quantizeMotionInterpolator">
+        <enum name="easeInOut" value="0"/>
+        <enum name="easeIn" value="1"/>
+        <enum name="easeOut" value="2"/>
+        <enum name="linear" value="3"/>
+        <enum name="bounce" value="4"/>
+        <enum name="overshoot" value="5"/>
+    </attr>
+    <attr format="float" name="quantizeMotionPhase"/>
+    <attr format="integer" name="quantizeMotionSteps"/>
     <attr format="reference" name="recyclerViewStyle"/>
     <attr format="color" name="rippleColor"/>
     <attr format="color|reference" name="scrimBackground"/>
@@ -360,6 +423,8 @@
     <attr format="reference" name="textAppearanceSubtitle1"/>
     <attr format="reference" name="textAppearanceSubtitle2"/>
     <attr format="reference" name="textInputStyle"/>
+    <attr format="color" name="textOutlineColor"/>
+    <attr format="dimension" name="textOutlineThickness"/>
     <attr format="dimension" name="themeLineHeight"/>
     <attr format="string" name="title"/>
     <attr format="reference" name="tooltipStyle"/>
@@ -374,6 +439,8 @@
         <enum name="end" value="6"/>
     </attr>
     <attr format="color" name="trackColor"/>
+    <attr format="reference" name="transformPivotTarget"/>
+    <attr format="boolean" name="transitionDisable"/>
     <attr format="string|enum" name="transitionEasing">
         <enum name="standard" value="0"/>
         <enum name="accelerate" value="1"/>
@@ -383,6 +450,12 @@
     <attr format="float" name="transitionPathRotate"/>
     <attr format="reference" name="transitionShapeAppearance"/>
     <attr format="boolean" name="useMaterialThemeColors"/>
+    <attr format="enum" name="viewTransitionMode">
+        <enum name="currentState" value="0"/>
+        <enum name="allStates" value="1"/>
+        <!--        Operates independently of the rest of MotionLayout constraint set system -->
+        <enum name="noState" value="2"/>
+    </attr>
     <attr format="enum" name="visibilityMode">
         <enum name="normal" value="0"/>
         <enum name="ignore" value="1"/>
@@ -390,7 +463,8 @@
     <attr format="integer" name="waveDecay"/>
     <attr format="float|dimension" name="waveOffset"/>
     <attr format="float" name="wavePeriod"/>
-    <attr format="enum" name="waveShape">
+    <attr format="float" name="wavePhase"/>
+    <attr format="enum|string" name="waveShape">
         <enum name="sin" value="0"/>
         <enum name="square" value="1"/>
         <enum name="triangle" value="2"/>
@@ -405,12 +479,14 @@
     </attr>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_config_actionMenuItemAllCaps">true</bool>
+    <bool name="is_iconics_content_provider_enabled">false</bool>
     <bool name="mtrl_btn_textappearance_all_caps">true</bool>
     <color name="abc_decor_view_status_guard">#ff000000</color>
     <color name="abc_decor_view_status_guard_light">#ffffffff</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
+    <color name="accent">@color/colorAccent</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <color name="androidx_core_ripple_material_light">#1f000000</color>
@@ -432,9 +508,11 @@
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#C0CBDF</color>
-    <color name="colorPrimary">#0088cc</color>
-    <color name="colorPrimaryDark">#083480</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#259BD6</color>
+    <color name="colorPrimaryDarck">#01476A</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_dark_default_color_background">#121212</color>
     <color name="design_dark_default_color_error">#CF6679</color>
@@ -485,6 +563,36 @@
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff008577</color>
+    <color name="material_drawer_accent">@color/materialize_accent</color>
+    <color name="material_drawer_background">@color/md_white_1000</color>
+    <color name="material_drawer_dark_background">@color/md_dark_background</color>
+    <color name="material_drawer_dark_divider">@color/md_dark_dividers</color>
+    <color name="material_drawer_dark_header_selection_subtext">@color/material_drawer_dark_secondary_text</color>
+    <color name="material_drawer_dark_header_selection_text">
+        @color/material_drawer_dark_primary_text
+    </color>
+    <color name="material_drawer_dark_hint_icon">@color/md_dark_disabled</color>
+    <color name="material_drawer_dark_hint_text">@color/md_dark_disabled</color>
+    <color name="material_drawer_dark_primary_icon">@color/md_dark_primary_icon</color>
+    <color name="material_drawer_dark_primary_text">@color/md_dark_primary_text</color>
+    <color name="material_drawer_dark_secondary_text">@color/md_dark_secondary</color>
+    <color name="material_drawer_dark_selected">#1F2196F3</color>
+    <color name="material_drawer_dark_selected_legacy">#202020</color>
+    <color name="material_drawer_dark_selected_text">@color/material_drawer_primary</color>
+    <color name="material_drawer_divider">@color/md_light_dividers</color>
+    <color name="material_drawer_header_selection_subtext">@color/material_drawer_secondary_text</color>
+    <color name="material_drawer_header_selection_text">@color/material_drawer_primary_text</color>
+    <color name="material_drawer_hint_icon">@color/md_light_disabled</color>
+    <color name="material_drawer_hint_text">@color/md_light_disabled</color>
+    <color name="material_drawer_primary">@color/materialize_primary</color>
+    <color name="material_drawer_primary_dark">@color/materialize_primary_dark</color>
+    <color name="material_drawer_primary_icon">@color/md_light_secondary</color>
+    <color name="material_drawer_primary_light">@color/materialize_primary_light</color>
+    <color name="material_drawer_primary_text">@color/md_light_primary_text</color>
+    <color name="material_drawer_secondary_text">@color/md_light_secondary</color>
+    <color name="material_drawer_selected">#1F2196F3</color>
+    <color name="material_drawer_selected_legacy">#E8E8E8</color>
+    <color name="material_drawer_selected_text">@color/material_drawer_primary</color>
     <color name="material_grey_100">#fff5f5f5</color>
     <color name="material_grey_300">#ffe0e0e0</color>
     <color name="material_grey_50">#fffafafa</color>
@@ -492,6 +600,287 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <color name="materialize_accent">@color/accent</color>
+    <color name="materialize_primary">@color/primary</color>
+    <color name="materialize_primary_dark">@color/primary_dark</color>
+    <color name="materialize_primary_light">@color/primary_light</color>
+    <color name="md_amber_100">#FFECB3</color>
+    <color name="md_amber_200">#FFE082</color>
+    <color name="md_amber_300">#FFD54F</color>
+    <color name="md_amber_400">#FFCA28</color>
+    <color name="md_amber_50">#FFF8E1</color>
+    <color name="md_amber_500">#FFC107</color>
+    <color name="md_amber_600">#FFB300</color>
+    <color name="md_amber_700">#FFA000</color>
+    <color name="md_amber_800">#FF8F00</color>
+    <color name="md_amber_900">#FF6F00</color>
+    <color name="md_amber_A100">#FFE57F</color>
+    <color name="md_amber_A200">#FFD740</color>
+    <color name="md_amber_A400">#FFC400</color>
+    <color name="md_amber_A700">#FFAB00</color>
+    <color name="md_black_1000">#000000</color>
+    <color name="md_blue_100">#BBDEFB</color>
+    <color name="md_blue_200">#90CAF9</color>
+    <color name="md_blue_300">#64B5F6</color>
+    <color name="md_blue_400">#42A5F5</color>
+    <color name="md_blue_50">#E3F2FD</color>
+    <color name="md_blue_500">#2196F3</color>
+    <color name="md_blue_600">#1E88E5</color>
+    <color name="md_blue_700">#1976D2</color>
+    <color name="md_blue_800">#1565C0</color>
+    <color name="md_blue_900">#0D47A1</color>
+    <color name="md_blue_A100">#82B1FF</color>
+    <color name="md_blue_A200">#448AFF</color>
+    <color name="md_blue_A400">#2979FF</color>
+    <color name="md_blue_A700">#2962FF</color>
+    <color name="md_blue_grey_100">#CFD8DC</color>
+    <color name="md_blue_grey_200">#B0BEC5</color>
+    <color name="md_blue_grey_300">#90A4AE</color>
+    <color name="md_blue_grey_400">#78909C</color>
+    <color name="md_blue_grey_50">#ECEFF1</color>
+    <color name="md_blue_grey_500">#607D8B</color>
+    <color name="md_blue_grey_600">#546E7A</color>
+    <color name="md_blue_grey_700">#455A64</color>
+    <color name="md_blue_grey_800">#37474F</color>
+    <color name="md_blue_grey_900">#263238</color>
+    <color name="md_brown_100">#D7CCC8</color>
+    <color name="md_brown_200">#BCAAA4</color>
+    <color name="md_brown_300">#A1887F</color>
+    <color name="md_brown_400">#8D6E63</color>
+    <color name="md_brown_50">#EFEBE9</color>
+    <color name="md_brown_500">#795548</color>
+    <color name="md_brown_600">#6D4C41</color>
+    <color name="md_brown_700">#5D4037</color>
+    <color name="md_brown_800">#4E342E</color>
+    <color name="md_brown_900">#3E2723</color>
+    <color name="md_cyan_100">#B2EBF2</color>
+    <color name="md_cyan_200">#80DEEA</color>
+    <color name="md_cyan_300">#4DD0E1</color>
+    <color name="md_cyan_400">#26C6DA</color>
+    <color name="md_cyan_50">#E0F7FA</color>
+    <color name="md_cyan_500">#00BCD4</color>
+    <color name="md_cyan_600">#00ACC1</color>
+    <color name="md_cyan_700">#0097A7</color>
+    <color name="md_cyan_800">#00838F</color>
+    <color name="md_cyan_900">#006064</color>
+    <color name="md_cyan_A100">#84FFFF</color>
+    <color name="md_cyan_A200">#18FFFF</color>
+    <color name="md_cyan_A400">#00E5FF</color>
+    <color name="md_cyan_A700">#00B8D4</color>
+    <color name="md_dark_appbar">@color/md_grey_900</color>
+    <color name="md_dark_background">@color/md_grey_850</color>
+    <color name="md_dark_cards">@color/md_grey_800</color>
+    <color name="md_dark_dialogs">@color/md_grey_800</color>
+    <color name="md_dark_disabled">#4DFFFFFF</color>
+    <color name="md_dark_dividers">#1FFFFFFF</color>
+    <color name="md_dark_primary_icon">#B3FFFFFF</color>
+    <color name="md_dark_primary_text">#FFFFFFFF</color>
+    <color name="md_dark_secondary">#B3FFFFFF</color>
+    <color name="md_dark_statusbar">@color/md_black_1000</color>
+    <color name="md_deep_orange_100">#FFCCBC</color>
+    <color name="md_deep_orange_200">#FFAB91</color>
+    <color name="md_deep_orange_300">#FF8A65</color>
+    <color name="md_deep_orange_400">#FF7043</color>
+    <color name="md_deep_orange_50">#FBE9E7</color>
+    <color name="md_deep_orange_500">#FF5722</color>
+    <color name="md_deep_orange_600">#F4511E</color>
+    <color name="md_deep_orange_700">#E64A19</color>
+    <color name="md_deep_orange_800">#D84315</color>
+    <color name="md_deep_orange_900">#BF360C</color>
+    <color name="md_deep_orange_A100">#FF9E80</color>
+    <color name="md_deep_orange_A200">#FF6E40</color>
+    <color name="md_deep_orange_A400">#FF3D00</color>
+    <color name="md_deep_orange_A700">#DD2C00</color>
+    <color name="md_deep_purple_100">#D1C4E9</color>
+    <color name="md_deep_purple_200">#B39DDB</color>
+    <color name="md_deep_purple_300">#9575CD</color>
+    <color name="md_deep_purple_400">#7E57C2</color>
+    <color name="md_deep_purple_50">#EDE7F6</color>
+    <color name="md_deep_purple_500">#673AB7</color>
+    <color name="md_deep_purple_600">#5E35B1</color>
+    <color name="md_deep_purple_700">#512DA8</color>
+    <color name="md_deep_purple_800">#4527A0</color>
+    <color name="md_deep_purple_900">#311B92</color>
+    <color name="md_deep_purple_A100">#B388FF</color>
+    <color name="md_deep_purple_A200">#7C4DFF</color>
+    <color name="md_deep_purple_A400">#651FFF</color>
+    <color name="md_deep_purple_A700">#6200EA</color>
+    <color name="md_green_100">#C8E6C9</color>
+    <color name="md_green_200">#A5D6A7</color>
+    <color name="md_green_300">#81C784</color>
+    <color name="md_green_400">#66BB6A</color>
+    <color name="md_green_50">#E8F5E9</color>
+    <color name="md_green_500">#4CAF50</color>
+    <color name="md_green_600">#43A047</color>
+    <color name="md_green_700">#388E3C</color>
+    <color name="md_green_800">#2E7D32</color>
+    <color name="md_green_900">#1B5E20</color>
+    <color name="md_green_A100">#B9F6CA</color>
+    <color name="md_green_A200">#69F0AE</color>
+    <color name="md_green_A400">#00E676</color>
+    <color name="md_green_A700">#00C853</color>
+    <color name="md_grey_100">#F5F5F5</color>
+    <color name="md_grey_200">#EEEEEE</color>
+    <color name="md_grey_300">#E0E0E0</color>
+    <color name="md_grey_400">#BDBDBD</color>
+    <color name="md_grey_50">#FAFAFA</color>
+    <color name="md_grey_500">#9E9E9E</color>
+    <color name="md_grey_600">#757575</color>
+    <color name="md_grey_700">#616161</color>
+    <color name="md_grey_800">#424242</color>
+    <color name="md_grey_850">#303030</color>
+    <color name="md_grey_900">#212121</color>
+    <color name="md_indigo_100">#C5CAE9</color>
+    <color name="md_indigo_200">#9FA8DA</color>
+    <color name="md_indigo_300">#7986CB</color>
+    <color name="md_indigo_400">#5C6BC0</color>
+    <color name="md_indigo_50">#E8EAF6</color>
+    <color name="md_indigo_500">#3F51B5</color>
+    <color name="md_indigo_600">#3949AB</color>
+    <color name="md_indigo_700">#303F9F</color>
+    <color name="md_indigo_800">#283593</color>
+    <color name="md_indigo_900">#1A237E</color>
+    <color name="md_indigo_A100">#8C9EFF</color>
+    <color name="md_indigo_A200">#536DFE</color>
+    <color name="md_indigo_A400">#3D5AFE</color>
+    <color name="md_indigo_A700">#304FFE</color>
+    <color name="md_light_appbar">@color/md_grey_100</color>
+    <color name="md_light_background">@color/md_grey_50</color>
+    <color name="md_light_blue_100">#B3E5FC</color>
+    <color name="md_light_blue_200">#81D4FA</color>
+    <color name="md_light_blue_300">#4FC3F7</color>
+    <color name="md_light_blue_400">#29B6F6</color>
+    <color name="md_light_blue_50">#E1F5FE</color>
+    <color name="md_light_blue_500">#03A9F4</color>
+    <color name="md_light_blue_600">#039BE5</color>
+    <color name="md_light_blue_700">#0288D1</color>
+    <color name="md_light_blue_800">#0277BD</color>
+    <color name="md_light_blue_900">#01579B</color>
+    <color name="md_light_blue_A100">#80D8FF</color>
+    <color name="md_light_blue_A200">#40C4FF</color>
+    <color name="md_light_blue_A400">#00B0FF</color>
+    <color name="md_light_blue_A700">#0091EA</color>
+    <color name="md_light_cards">@color/md_white_1000</color>
+    <color name="md_light_dialogs">@color/md_white_1000</color>
+    <color name="md_light_disabled">#61000000</color>
+    <color name="md_light_dividers">#1F000000</color>
+    <color name="md_light_green_100">#DCEDC8</color>
+    <color name="md_light_green_200">#C5E1A5</color>
+    <color name="md_light_green_300">#AED581</color>
+    <color name="md_light_green_400">#9CCC65</color>
+    <color name="md_light_green_50">#F1F8E9</color>
+    <color name="md_light_green_500">#8BC34A</color>
+    <color name="md_light_green_600">#7CB342</color>
+    <color name="md_light_green_700">#689F38</color>
+    <color name="md_light_green_800">#558B2F</color>
+    <color name="md_light_green_900">#33691E</color>
+    <color name="md_light_green_A100">#CCFF90</color>
+    <color name="md_light_green_A200">#B2FF59</color>
+    <color name="md_light_green_A400">#76FF03</color>
+    <color name="md_light_green_A700">#64DD17</color>
+    <color name="md_light_primary_icon">#8A000000</color>
+    <color name="md_light_primary_text">#DE000000</color>
+    <color name="md_light_secondary">#8A000000</color>
+    <color name="md_light_statusbar">@color/md_grey_300</color>
+    <color name="md_lime_100">#F0F4C3</color>
+    <color name="md_lime_200">#E6EE9C</color>
+    <color name="md_lime_300">#DCE775</color>
+    <color name="md_lime_400">#D4E157</color>
+    <color name="md_lime_50">#F9FBE7</color>
+    <color name="md_lime_500">#CDDC39</color>
+    <color name="md_lime_600">#C0CA33</color>
+    <color name="md_lime_700">#AFB42B</color>
+    <color name="md_lime_800">#9E9D24</color>
+    <color name="md_lime_900">#827717</color>
+    <color name="md_lime_A100">#F4FF81</color>
+    <color name="md_lime_A200">#EEFF41</color>
+    <color name="md_lime_A400">#C6FF00</color>
+    <color name="md_lime_A700">#AEEA00</color>
+    <color name="md_orange_100">#FFE0B2</color>
+    <color name="md_orange_200">#FFCC80</color>
+    <color name="md_orange_300">#FFB74D</color>
+    <color name="md_orange_400">#FFA726</color>
+    <color name="md_orange_50">#FFF3E0</color>
+    <color name="md_orange_500">#FF9800</color>
+    <color name="md_orange_600">#FB8C00</color>
+    <color name="md_orange_700">#F57C00</color>
+    <color name="md_orange_800">#EF6C00</color>
+    <color name="md_orange_900">#E65100</color>
+    <color name="md_orange_A100">#FFD180</color>
+    <color name="md_orange_A200">#FFAB40</color>
+    <color name="md_orange_A400">#FF9100</color>
+    <color name="md_orange_A700">#FF6D00</color>
+    <color name="md_pink_100">#F8BBD0</color>
+    <color name="md_pink_200">#F48FB1</color>
+    <color name="md_pink_300">#F06292</color>
+    <color name="md_pink_400">#EC407A</color>
+    <color name="md_pink_50">#FCE4EC</color>
+    <color name="md_pink_500">#E91E63</color>
+    <color name="md_pink_600">#D81B60</color>
+    <color name="md_pink_700">#C2185B</color>
+    <color name="md_pink_800">#AD1457</color>
+    <color name="md_pink_900">#880E4F</color>
+    <color name="md_pink_A100">#FF80AB</color>
+    <color name="md_pink_A200">#FF4081</color>
+    <color name="md_pink_A400">#F50057</color>
+    <color name="md_pink_A700">#C51162</color>
+    <color name="md_purple_100">#E1BEE7</color>
+    <color name="md_purple_200">#CE93D8</color>
+    <color name="md_purple_300">#BA68C8</color>
+    <color name="md_purple_400">#AB47BC</color>
+    <color name="md_purple_50">#F3E5F5</color>
+    <color name="md_purple_500">#9C27B0</color>
+    <color name="md_purple_600">#8E24AA</color>
+    <color name="md_purple_700">#7B1FA2</color>
+    <color name="md_purple_800">#6A1B9A</color>
+    <color name="md_purple_900">#4A148C</color>
+    <color name="md_purple_A100">#EA80FC</color>
+    <color name="md_purple_A200">#E040FB</color>
+    <color name="md_purple_A400">#D500F9</color>
+    <color name="md_purple_A700">#AA00FF</color>
+    <color name="md_red_100">#FFCDD2</color>
+    <color name="md_red_200">#EF9A9A</color>
+    <color name="md_red_300">#E57373</color>
+    <color name="md_red_400">#EF5350</color>
+    <color name="md_red_50">#FFEBEE</color>
+    <color name="md_red_500">#F44336</color>
+    <color name="md_red_600">#E53935</color>
+    <color name="md_red_700">#D32F2F</color>
+    <color name="md_red_800">#C62828</color>
+    <color name="md_red_900">#B71C1C</color>
+    <color name="md_red_A100">#FF8A80</color>
+    <color name="md_red_A200">#FF5252</color>
+    <color name="md_red_A400">#FF1744</color>
+    <color name="md_red_A700">#D50000</color>
+    <color name="md_teal_100">#B2DFDB</color>
+    <color name="md_teal_200">#80CBC4</color>
+    <color name="md_teal_300">#4DB6AC</color>
+    <color name="md_teal_400">#26A69A</color>
+    <color name="md_teal_50">#E0F2F1</color>
+    <color name="md_teal_500">#009688</color>
+    <color name="md_teal_600">#00897B</color>
+    <color name="md_teal_700">#00796B</color>
+    <color name="md_teal_800">#00695C</color>
+    <color name="md_teal_900">#004D40</color>
+    <color name="md_teal_A100">#A7FFEB</color>
+    <color name="md_teal_A200">#64FFDA</color>
+    <color name="md_teal_A400">#1DE9B6</color>
+    <color name="md_teal_A700">#00BFA5</color>
+    <color name="md_white_1000">#FFFFFF</color>
+    <color name="md_yellow_100">#FFF9C4</color>
+    <color name="md_yellow_200">#FFF59D</color>
+    <color name="md_yellow_300">#FFF176</color>
+    <color name="md_yellow_400">#FFEE58</color>
+    <color name="md_yellow_50">#FFFDE7</color>
+    <color name="md_yellow_500">#FFEB3B</color>
+    <color name="md_yellow_600">#FDD835</color>
+    <color name="md_yellow_700">#FBC02D</color>
+    <color name="md_yellow_800">#F9A825</color>
+    <color name="md_yellow_900">#F57F17</color>
+    <color name="md_yellow_A100">#FFFF8D</color>
+    <color name="md_yellow_A200">#FFFF00</color>
+    <color name="md_yellow_A400">#FFEA00</color>
+    <color name="md_yellow_A700">#FFD600</color>
     <color name="mtrl_btn_text_color_disabled">#61000000</color>
     <color name="mtrl_btn_transparent_bg_color">#00ffffff</color>
     <color name="mtrl_scrim_color">#52000000</color>
@@ -502,8 +891,11 @@
     <color name="mtrl_textinput_hovered_box_stroke_color">#DE000000</color>
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
+    <color name="primary">@color/colorPrimary</color>
+    <color name="primary_dark">@color/colorPrimaryDark</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
+    <color name="primary_light">@color/colorPrimaryLight</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
     <color name="primary_material_light">@color/material_grey_100</color>
     <color name="primary_text_default_material_dark">#ffffffff</color>
@@ -622,6 +1014,7 @@
     <dimen name="compat_control_corner_material">2dp</dimen>
     <dimen name="compat_notification_large_icon_max_height">320dp</dimen>
     <dimen name="compat_notification_large_icon_max_width">320dp</dimen>
+    <dimen name="def_drawer_elevation">10dp</dimen>
     <dimen name="default_dimension">100dp</dimen>
     <dimen name="design_appbar_elevation">4dp</dimen>
     <dimen name="design_bottom_navigation_active_item_max_width">168dp</dimen>
@@ -699,6 +1092,51 @@
     <dimen name="material_cursor_inset_bottom">-6dp</dimen>
     <dimen name="material_cursor_inset_top">-12dp</dimen>
     <dimen name="material_cursor_width">2dp</dimen>
+    <dimen name="material_drawer_account_header_compact">56dp</dimen>
+    <dimen name="material_drawer_account_header_dropdown">22dp</dimen>
+    <dimen name="material_drawer_account_header_dropdown_guideline">80dp</dimen>
+    <dimen name="material_drawer_account_header_dropdown_margin_bottom">18dp</dimen>
+    <dimen name="material_drawer_account_header_dropdown_padding">5dp</dimen>
+    <dimen name="material_drawer_account_header_height">160dp</dimen>
+    <dimen name="material_drawer_account_header_height_compact">72dp</dimen>
+    <dimen name="material_drawer_account_header_horizontal_bottom">4dp</dimen>
+    <dimen name="material_drawer_account_header_horizontal_top">16dp</dimen>
+    <dimen name="material_drawer_account_header_non_compact_padding">56dp</dimen>
+    <dimen name="material_drawer_account_header_secondary">40dp</dimen>
+    <dimen name="material_drawer_account_header_selected">56dp</dimen>
+    <dimen name="material_drawer_account_header_subtext">13sp</dimen>
+    <dimen name="material_drawer_account_header_title">20sp</dimen>
+    <dimen name="material_drawer_item_background_padding_start_end">8dp</dimen>
+    <dimen name="material_drawer_item_background_padding_top_bottom">4dp</dimen>
+    <dimen name="material_drawer_item_corner_radius">4dp</dimen>
+    <dimen name="material_drawer_item_padding">8dp</dimen>
+    <dimen name="material_drawer_item_primary">48dp</dimen>
+    <dimen name="material_drawer_item_primary_description">14sp</dimen>
+    <dimen name="material_drawer_item_primary_icon">56dp</dimen>
+    <dimen name="material_drawer_item_primary_icon_padding">12dp</dimen>
+    <dimen name="material_drawer_item_primary_icon_padding_right">32dp</dimen>
+    <dimen name="material_drawer_item_primary_text">14sp</dimen>
+    <dimen name="material_drawer_item_profile">72dp</dimen>
+    <dimen name="material_drawer_item_profile_description">14sp</dimen>
+    <dimen name="material_drawer_item_profile_icon">40dp</dimen>
+    <dimen name="material_drawer_item_profile_icon_padding">16dp</dimen>
+    <dimen name="material_drawer_item_profile_icon_padding_right">8dp</dimen>
+    <dimen name="material_drawer_item_profile_icon_width">48dp</dimen>
+    <dimen name="material_drawer_item_profile_setting_icon_padding">24dp</dimen>
+    <dimen name="material_drawer_item_profile_text">14sp</dimen>
+    <dimen name="material_drawer_item_secondary">42dp</dimen>
+    <dimen name="material_drawer_item_secondary_description">12sp</dimen>
+    <dimen name="material_drawer_item_secondary_extra_text">12sp</dimen>
+    <dimen name="material_drawer_item_secondary_icon">56dp</dimen>
+    <dimen name="material_drawer_item_secondary_icon_padding">12dp</dimen>
+    <dimen name="material_drawer_item_secondary_icon_padding_right">36dp</dimen>
+    <dimen name="material_drawer_item_secondary_text">14sp</dimen>
+    <dimen name="material_drawer_item_section_text">14sp</dimen>
+    <dimen name="material_drawer_margin">0dp</dimen>
+    <dimen name="material_drawer_padding">8dp</dimen>
+    <dimen name="material_drawer_sticky_footer_elevation">4dp</dimen>
+    <dimen name="material_drawer_vertical_padding">16dp</dimen>
+    <dimen name="material_drawer_width">320dp</dimen>
     <item format="float" name="material_emphasis_disabled" type="dimen">0.38</item>
     <item format="float" name="material_emphasis_high_type" type="dimen">0.87</item>
     <item format="float" name="material_emphasis_medium" type="dimen">0.6</item>
@@ -712,6 +1150,14 @@
     <dimen name="material_helper_text_font_1_3_padding_horizontal">12dp</dimen>
     <dimen name="material_helper_text_font_1_3_padding_top">8dp</dimen>
     <dimen name="material_input_text_to_prefix_suffix_padding">2dp</dimen>
+    <dimen name="material_mini_drawer_item">72dp</dimen>
+    <dimen name="material_mini_drawer_item_badge_text">12sp</dimen>
+    <dimen name="material_mini_drawer_item_icon">56dp</dimen>
+    <dimen name="material_mini_drawer_item_icon_padding">16dp</dimen>
+    <dimen name="material_mini_drawer_item_padding">4dp</dimen>
+    <dimen name="material_mini_drawer_item_padding_sides">8dp</dimen>
+    <dimen name="material_mini_drawer_item_profile_icon">40dp</dimen>
+    <dimen name="material_mini_drawer_item_profile_icon_padding">16dp</dimen>
     <dimen name="material_text_view_test_line_height">200px</dimen>
     <dimen name="material_text_view_test_line_height_override">100px</dimen>
     <dimen name="material_textinput_default_width">245dp</dimen>
@@ -720,6 +1166,35 @@
     <dimen name="material_time_picker_minimum_screen_height">560dp</dimen>
     <dimen name="material_time_picker_minimum_screen_width">340dp</dimen>
     <dimen name="material_timepicker_dialog_buttons_margin_top">24dp</dimen>
+    <dimen name="materialize_avatar">40dp</dimen>
+    <dimen name="materialize_baseline_grid">8dp</dimen>
+    <dimen name="materialize_baseline_grid_small">4dp</dimen>
+    <dimen name="materialize_baseline_grid_x10">80dp</dimen>
+    <dimen name="materialize_baseline_grid_x2">16dp</dimen>
+    <dimen name="materialize_baseline_grid_x3">24dp</dimen>
+    <dimen name="materialize_baseline_grid_x4">32dp</dimen>
+    <dimen name="materialize_baseline_grid_x5">40dp</dimen>
+    <dimen name="materialize_baseline_grid_x6">48dp</dimen>
+    <dimen name="materialize_baseline_grid_x7">56dp</dimen>
+    <dimen name="materialize_baseline_grid_x8">64dp</dimen>
+    <dimen name="materialize_baseline_grid_x9">72dp</dimen>
+    <dimen name="materialize_content_margin_with_icon">72dp</dimen>
+    <dimen name="materialize_icon">24dp</dimen>
+    <dimen name="materialize_listitem">72dp</dimen>
+    <dimen name="materialize_right_side_icon_margin">32dp</dimen>
+    <dimen name="materialize_screen_edge">16dp</dimen>
+    <dimen name="materialize_spacing">8dp</dimen>
+    <dimen name="materialize_statusbar">24dp</dimen>
+    <dimen name="materialize_subtitle">48dp</dimen>
+    <dimen name="materialize_toolbar">56dp</dimen>
+    <dimen name="materialize_touch_target">48dp</dimen>
+    <dimen name="materialize_typography_body1">14sp</dimen>
+    <dimen name="materialize_typography_body2">14sp</dimen>
+    <dimen name="materialize_typography_caption">12sp</dimen>
+    <dimen name="materialize_typography_display1">34sp</dimen>
+    <dimen name="materialize_typography_headline">24sp</dimen>
+    <dimen name="materialize_typography_subheading">16sp</dimen>
+    <dimen name="materialize_typography_title">20sp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_bottom">80dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_end">24dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_start">24dp</dimen>
@@ -942,6 +1417,7 @@
     <dimen name="test_navigation_bar_label_padding">10dp</dimen>
     <dimen name="test_navigation_bar_shadow_height">1dp</dimen>
     <dimen name="test_navigation_bar_text_size">12sp</dimen>
+    <dimen name="tool_bar_top_padding">0dp</dimen>
     <dimen name="tooltip_corner_radius">2dp</dimen>
     <dimen name="tooltip_horizontal_padding">16dp</dimen>
     <dimen name="tooltip_margin">8dp</dimen>
@@ -991,15 +1467,41 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="fastadapter_item" type="id"/>
+    <item name="fastadapter_item_adapter" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
     <item name="home" type="id"/>
+    <item name="iconics_tag_id" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="line1" type="id"/>
     <item name="line3" type="id"/>
     <item name="material_clock_face" type="id"/>
+    <item name="material_drawer_animation" type="id"/>
+    <item name="material_drawer_item" type="id"/>
+    <item name="material_drawer_item_container" type="id"/>
+    <item name="material_drawer_item_divider" type="id"/>
+    <item name="material_drawer_item_expandable" type="id"/>
+    <item name="material_drawer_item_expandable_badge" type="id"/>
+    <item name="material_drawer_item_mini" type="id"/>
+    <item name="material_drawer_item_mini_profile" type="id"/>
+    <item name="material_drawer_item_primary" type="id"/>
+    <item name="material_drawer_item_primary_switch" type="id"/>
+    <item name="material_drawer_item_primary_toggle" type="id"/>
+    <item name="material_drawer_item_profile" type="id"/>
+    <item name="material_drawer_item_profile_setting" type="id"/>
+    <item name="material_drawer_item_secondary" type="id"/>
+    <item name="material_drawer_item_secondary_switch" type="id"/>
+    <item name="material_drawer_item_secondary_toggle" type="id"/>
+    <item name="material_drawer_item_section" type="id"/>
+    <item name="material_drawer_menu_default_group" type="id"/>
+    <item name="material_drawer_profile_header" type="id"/>
+    <item name="material_drawer_slider_layout" type="id"/>
+    <item name="material_drawer_sticky_footer" type="id"/>
+    <item name="material_drawer_sticky_header" type="id"/>
     <item name="material_value_index" type="id"/>
+    <item name="materialize_root" type="id"/>
     <item name="motion_base" type="id"/>
     <item name="mtrl_anchor_parent" type="id"/>
     <item name="mtrl_card_checked_layer_id" type="id"/>
@@ -1052,6 +1554,7 @@
     <item name="transition_transform" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
+    <item name="view_transition" type="id"/>
     <id name="view_tree_lifecycle_owner"/>
     <id name="view_tree_saved_state_registry_owner"/>
     <id name="view_tree_view_model_store_owner"/>
@@ -1088,7 +1591,7 @@
     <item quantity="one"><ns2:g id="count">%d</ns2:g> new notification</item>
     <item quantity="other"><ns2:g id="count">%d</ns2:g> new notifications</item>
   </plurals>
-    <string name="Settings_app_settings">App Settings</string>
+    <string name="Settings_app_settings">Настройки приложения</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -1116,26 +1619,98 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns2:g example="Mail" id="application_name">%s</ns2:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="app_name">ToDoCHecklist</string>
+    <string name="app_name">ToDo</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
     <string description="A description of an action that a user of an accessibility service can perform to expand a bottomsheet halfway to its full height. [CHAR LIMIT=25]" name="bottomsheet_action_expand_halfway">Expand halfway</string>
-    <string name="button_clear">Clear</string>
-    <string name="button_save">Save</string>
+    <string name="button_clear">Очистить</string>
+    <string name="button_save">Сохранить</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="chip_text">Chip text</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="define_AndroidIconics">year;owner</string>
+    <string name="define_fastadapter">year;owner</string>
+    <string name="define_materialdrawer">year;owner</string>
+    <string name="define_materialize">year;owner</string>
+    <string name="define_processor_blink_alpha">com.mikepenz.iconics.animation.BlinkAlphaProcessor</string>
+    <string name="define_processor_blink_scale">com.mikepenz.iconics.animation.BlinkScaleProcessor</string>
+    <string name="define_processor_spin">com.mikepenz.iconics.animation.SpinProcessor</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="fastadapter_lib_version" translatable="false">4.1.2</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
+    <string name="iconics_lib_version" translatable="false">4.0.2</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="library_AndroidIconics_author">Mike Penz</string>
+    <string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
+    <string name="library_AndroidIconics_isOpenSource">true</string>
+    <string name="library_AndroidIconics_libraryDescription">
+        <![CDATA[
+        This library allows you to include vector icons everywhere in your project. No limits are given. Scale with no limit, use any Color at any time, provide a contour, and many additional customizations
+        ]]>
+    </string>
+    <string name="library_AndroidIconics_libraryName">Android-Iconics</string>
+    <string name="library_AndroidIconics_libraryVersion">@string/iconics_lib_version</string>
+    <string name="library_AndroidIconics_libraryWebsite">https://github.com/mikepenz/Android-Iconics</string>
+    <string name="library_AndroidIconics_licenseId">apache_2_0</string>
+    <string name="library_AndroidIconics_owner">Mike Penz</string>
+    <string name="library_AndroidIconics_repositoryLink">https://github.com/mikepenz/Android-Iconics</string>
+    <string name="library_AndroidIconics_year">2017</string>
+    <string name="library_fastadapter_author">Mike Penz</string>
+    <string name="library_fastadapter_authorWebsite">http://mikepenz.com/</string>
+    <string name="library_fastadapter_isOpenSource">true</string>
+    <string name="library_fastadapter_libraryDescription">
+        <![CDATA[
+        <b>FastAdapter</b>, the bullet proof, fast and easy to use adapter library, which minimizes developing time to a fraction...
+        ]]>
+    </string>
+    <string name="library_fastadapter_libraryName">FastAdapter</string>
+    <string name="library_fastadapter_libraryVersion">@string/fastadapter_lib_version</string>
+    <string name="library_fastadapter_libraryWebsite">https://github.com/mikepenz/FastAdapter</string>
+    <string name="library_fastadapter_licenseId">apache_2_0</string>
+    <string name="library_fastadapter_owner">Mike Penz</string>
+    <string name="library_fastadapter_repositoryLink">https://github.com/mikepenz/FastAdapter</string>
+    <string name="library_fastadapter_year">2018</string>
+    <string name="library_materialdrawer_author">Mike Penz</string>
+    <string name="library_materialdrawer_authorWebsite">http://mikepenz.com/</string>
+    <string name="library_materialdrawer_isOpenSource">true</string>
+    <string name="library_materialdrawer_libraryDescription">
+        <![CDATA[
+        <b>MaterialDrawer</b> the flexible, easy to use, all in one drawer library for your Android project.
+        ]]>
+    </string>
+    <string name="library_materialdrawer_libraryName">MaterialDrawer</string>
+    <string name="library_materialdrawer_libraryVersion">@string/materialdrawer_lib_version</string>
+    <string name="library_materialdrawer_libraryWebsite">https://github.com/mikepenz/MaterialDrawer</string>
+    <string name="library_materialdrawer_licenseId">apache_2_0</string>
+    <string name="library_materialdrawer_owner">Mike Penz</string>
+    <string name="library_materialdrawer_repositoryLink">https://github.com/mikepenz/MaterialDrawer</string>
+    <string name="library_materialdrawer_year">2018</string>
+    <string name="library_materialize_author">Mike Penz</string>
+    <string name="library_materialize_authorWebsite">http://mikepenz.com/</string>
+    <string name="library_materialize_isOpenSource">true</string>
+    <string name="library_materialize_libraryDescription">
+        <![CDATA[
+        <b>Materialize</b> comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior&#8230;
+        ]]>
+    </string>
+    <string name="library_materialize_libraryName">Materialize</string>
+    <string name="library_materialize_libraryVersion">@string/materialize_lib_version</string>
+    <string name="library_materialize_libraryWebsite">https://github.com/mikepenz/Materialize</string>
+    <string name="library_materialize_licenseId">apache_2_0</string>
+    <string name="library_materialize_owner">Mike Penz</string>
+    <string name="library_materialize_repositoryLink">https://github.com/mikepenz/Materialize</string>
+    <string name="library_materialize_year">2016</string>
     <string name="material_clock_display_divider" translatable="false">:</string>
     <string description="Description for the toggle to choose between AM and PM [CHAR_LIMIT=NONE] " name="material_clock_toggle_content_description">Select AM or PM</string>
+    <string name="material_drawer_close">Close</string>
+    <string name="material_drawer_open">Open</string>
+    <string name="material_drawer_profile_content_description">Profile icon</string>
     <string description="Description for button to switch to select the hour [CHAR_LIMIT=NONE]" name="material_hour_selection">Select hour</string>
     <string description="spoken suffix for an hour in the clock [CHAR_LIMIT=10]" name="material_hour_suffix"><ns2:g id="number">%1$s</ns2:g> o\'clock</string>
     <string description="Description for button to switch to select the minute [CHAR_LIMIT=NONE]" name="material_minute_selection">Select minutes</string>
@@ -1154,6 +1729,8 @@
     <string description="Suffix for time in 12-hour standard, after noon. [CHAR_LIMIT=2]" name="material_timepicker_pm">PM</string>
     <string description="Title for the dialog with a time picker. [CHAR_LIMIT=32]" name="material_timepicker_select_time">Select time</string>
     <string name="material_timepicker_text_input_mode_description">Switch to text input mode for the time input.</string>
+    <string name="materialdrawer_lib_version" translatable="false">7.0.0</string>
+    <string name="materialize_lib_version" translatable="false">1.2.1</string>
     <string description="Content description for new notification (no number count) [CHAR_LIMIT=NONE]" name="mtrl_badge_numberless_content_description">New notification</string>
     <string description="Content description for a close icon that lets the user remove content from the screen" name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
     <string description="Plural form content description for when the number of new notifications exceeds a maximum count[CHAR_LIMIT=NONE]" name="mtrl_exceed_max_badge_number_content_description" ns1:ignore="PluralsCandidate">More than <ns2:g example="999" id="maximum number">%1$d</ns2:g> new notifications</string>
@@ -1195,9 +1772,9 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="search_menu_title">Search</string>
-    <string name="settings_url">Set URL</string>
-    <string name="settings_user_login_settings">Login:</string>
-    <string name="settings_user_pass_settings">Password:</string>
+    <string name="settings_url">URL</string>
+    <string name="settings_user_login_settings">Логин</string>
+    <string name="settings_user_pass_settings">Пароль</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -3217,6 +3794,12 @@
     <item name="shapeAppearanceOverlay">@null</item>
   </style>
     <style name="Base.Widget.MaterialComponents.TextView" parent="Widget.AppCompat.TextView"/>
+    <style name="BezelImageView">
+        <item name="biv_maskDrawable">@drawable/material_drawer_circle_mask</item>
+        <item name="biv_drawCircularShadow">true</item>
+        <item name="biv_selectorOnPress">@color/material_drawer_primary</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
     <style name="CardView" parent="Base.CardView">
     </style>
     <style name="CardView.Dark">
@@ -3226,6 +3809,14 @@
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
     <style name="EmptyTheme"/>
+    <style name="Material.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/white</item>
+    </style>
+    <style name="Material.Light.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/black</item>
+    </style>
     <style name="MaterialAlertDialog.MaterialComponents" parent="AlertDialog.AppCompat">
     <item name="android:layout">@layout/mtrl_alert_dialog</item>
     <item name="listItemLayout">@layout/mtrl_alert_select_dialog_item</item>
@@ -3274,6 +3865,430 @@
     <item name="android:layout_gravity">center</item>
     <item name="android:textAlignment" ns1:ignore="NewApi">center</item>
   </style>
+    <style name="MaterialBaseBaseTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/Material.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
+
+        <!-- Material specific values -->
+    </style>
+    <style name="MaterialBaseBaseTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/Material.Light.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
+
+        <!-- Material specific values -->
+    </style>
+    <style name="MaterialBaseBaseTheme.Light.DarkToolbar" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/Material.DrawerArrowStyle</item>
+
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
+
+        <!-- Material specific values -->
+    </style>
+    <style name="MaterialBaseTheme" parent="MaterialBaseBaseTheme"/>
+    <style name="MaterialBaseTheme.Light" parent="MaterialBaseBaseTheme.Light"/>
+    <style name="MaterialBaseTheme.Light.DarkToolbar" parent="MaterialBaseBaseTheme.Light.DarkToolbar"/>
+    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/white</item>
+    </style>
+    <style name="MaterialDrawer.Light.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@android:color/black</item>
+    </style>
+    <style name="MaterialDrawerTheme" parent="MaterialTheme">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_dark_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_dark_selected_legacy
+        </item>
+        <item name="material_drawer_selected_text">@color/material_drawer_dark_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_dark_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.ActionBar" parent="MaterialTheme.ActionBar">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_dark_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_dark_selected_legacy
+        </item>
+        <item name="material_drawer_selected_text">@color/material_drawer_dark_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_dark_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.ActionBar.TranslucentStatus" parent="MaterialTheme.ActionBar.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_dark_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_dark_selected_legacy
+        </item>
+        <item name="material_drawer_selected_text">@color/material_drawer_dark_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_dark_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light" parent="MaterialTheme.Light">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.Light.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.ActionBar" parent="MaterialTheme.Light.ActionBar">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.Light.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.ActionBar.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.Light.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="MaterialTheme.Light.DarkToolbar">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.DarkToolbar.ActionBar" parent="MaterialTheme.Light.DarkToolbar.ActionBar">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.Light.TranslucentStatus" parent="MaterialTheme.Light.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.Light.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_selected_legacy</item>
+        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialDrawerTheme.TranslucentStatus" parent="MaterialTheme.TranslucentStatus">
+        <!-- Here we setting appcompat’s actionBarStyle -->
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+
+        <!-- ...and here we setting appcompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_drawer_primary</item>
+        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
+        <item name="colorAccent">@color/material_drawer_accent</item>
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_dark_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_dark_primary_text</item>
+        <item name="material_drawer_primary_icon">@color/material_drawer_dark_primary_icon</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_dark_secondary_text
+        </item>
+        <item name="material_drawer_hint_text">@color/material_drawer_dark_hint_text</item>
+        <item name="material_drawer_hint_icon">@color/material_drawer_dark_hint_icon</item>
+        <item name="material_drawer_divider">@color/material_drawer_dark_divider</item>
+        <item name="material_drawer_selected">@color/material_drawer_dark_selected</item>
+        <item name="material_drawer_selected_legacy">@color/material_drawer_dark_selected_legacy
+        </item>
+        <item name="material_drawer_selected_text">@color/material_drawer_dark_selected_text</item>
+        <item name="material_drawer_header_selection_text">
+            @color/material_drawer_dark_header_selection_text
+        </item>
+        <item name="material_drawer_header_selection_subtext">
+            @color/material_drawer_dark_header_selection_subtext
+        </item>
+        <item name="material_drawer_legacy_style">false</item>
+    </style>
+    <style name="MaterialTheme" parent="MaterialBaseTheme"/>
+    <style name="MaterialTheme.ActionBar" parent="MaterialTheme">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
+    <style name="MaterialTheme.ActionBar.DayNight" parent="MaterialTheme.Light.ActionBar"/>
+    <style name="MaterialTheme.ActionBar.TranslucentStatus" parent="MaterialTheme.ActionBar"/>
+    <style name="MaterialTheme.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.ActionBar.TranslucentStatus"/>
+    <style name="MaterialTheme.DarkToolbar.ActionBar.DayNight" parent="MaterialTheme.Light.DarkToolbar.ActionBar"/>
+    <style name="MaterialTheme.DarkToolbar.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus"/>
+    <style name="MaterialTheme.DarkToolbar.DayNight" parent="MaterialTheme.Light.DarkToolbar"/>
+    <style name="MaterialTheme.DarkToolbar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.DarkToolbar.TranslucentStatus"/>
+    <style name="MaterialTheme.DayNight" parent="MaterialTheme.Light"/>
+    <style name="MaterialTheme.Light" parent="MaterialBaseTheme.Light"/>
+    <style name="MaterialTheme.Light.ActionBar" parent="MaterialTheme.Light">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
+    <style name="MaterialTheme.Light.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.ActionBar"/>
+    <style name="MaterialTheme.Light.DarkToolbar" parent="MaterialBaseTheme.Light.DarkToolbar"/>
+    <style name="MaterialTheme.Light.DarkToolbar.ActionBar" parent="MaterialTheme.Light.DarkToolbar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+
+        <!-- only set this if we use an ActionBar -->
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Dark</item>
+    </style>
+    <style name="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar"/>
+    <style name="MaterialTheme.Light.DarkToolbar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar"/>
+    <style name="MaterialTheme.Light.TranslucentStatus" parent="MaterialTheme.Light"/>
+    <style name="MaterialTheme.TranslucentStatus" parent="MaterialTheme"/>
+    <style name="MaterialTheme.TranslucentStatus.DayNight" parent="MaterialTheme.Light.TranslucentStatus"/>
     <style name="Platform.AppCompat" parent="android:Theme.Holo">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
@@ -3951,7 +4966,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-    <style name="Theme.ToDoCHecklist" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ToDo" parent="MaterialDrawerTheme.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -5063,6 +6078,9 @@
     <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Tooltip</item>
     <item name="shapeAppearance">@style/ShapeAppearance.MaterialComponents.Tooltip</item>
   </style>
+    <style name="Widget.Materialize.ScrimInsetsRelativeLayout" parent="">
+        <item name="sirl_insetForeground">#4000</item>
+    </style>
     <style name="Widget.Support.CoordinatorLayout" parent="android:Widget">
         <item name="statusBarBackground">#000000</item>
     </style>
@@ -5943,6 +6961,11 @@
     -->
     <attr format="integer" name="minHideDelay"/>
   </declare-styleable>
+    <declare-styleable name="BezelImageView">
+        <attr format="reference" name="biv_maskDrawable"/>
+        <attr format="boolean" name="biv_drawCircularShadow"/>
+        <attr format="color|reference" name="biv_selectorOnPress"/>
+    </declare-styleable>
     <declare-styleable name="BottomAppBar">
     <!-- Background for the BottomAppBar. -->
     <attr name="backgroundTint"/>
@@ -6082,6 +7105,24 @@
         <attr name="android:minWidth"/>
         <!-- Workaround to read user defined minimum height -->
         <attr name="android:minHeight"/>
+    </declare-styleable>
+    <declare-styleable name="Carousel">
+        <attr format="reference" name="carousel_firstView"/>
+        <attr format="reference" name="carousel_previousState"/>
+        <attr format="reference" name="carousel_nextState"/>
+        <attr format="boolean" name="carousel_infinite"/>
+        <attr format="reference" name="carousel_forwardTransition"/>
+        <attr format="reference" name="carousel_backwardTransition"/>
+        <attr format="float" name="carousel_touchUp_dampeningFactor"/>
+        <attr format="enum" name="carousel_touchUpMode">
+            <enum name="immediateStop" value="1"/>
+            <enum name="carryVelocity" value="2"/>
+        </attr>
+        <attr format="float" name="carousel_touchUp_velocityThreshold"/>
+        <attr format="enum" name="carousel_emptyViewsBehavior">
+            <enum name="invisible" value="4"/>
+            <enum name="gone" value="8"/>
+        </attr>
     </declare-styleable>
     <declare-styleable name="Chip">
     <!-- Surface layer color to apply to the chip. -->
@@ -6424,10 +7465,647 @@
             <enum name="add" value="16"/>
         </attr>
     </declare-styleable>
-    <declare-styleable name="Constraint"><attr name="android:orientation"/><attr name="android:id"/><attr name="android:visibility"/><attr name="visibilityMode"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="pivotAnchor"/><attr name="android:transformPivotX"/><attr name="android:transformPivotY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_marginStart"/><attr name="android:layout_marginBottom"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginEnd"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginRight"/><attr name="layout_constraintCircle"/><attr name="layout_constraintCircleRadius"/><attr name="layout_constraintCircleAngle"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constrainedWidth"/><attr name="layout_constrainedHeight"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="layout_constraintWidth_percent"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintHeight_percent"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/><attr name="barrierDirection"/><attr name="barrierMargin"/><attr name="constraint_referenced_ids"/><attr name="constraint_referenced_tags"/><attr name="android:maxHeight"/><attr name="android:maxWidth"/><attr name="android:minHeight"/><attr name="android:minWidth"/><attr name="barrierAllowsGoneWidgets"/><attr name="chainUseRtl"/><attr name="flow_horizontalStyle"/><attr name="flow_verticalStyle"/><attr name="flow_verticalAlign"/><attr name="flow_horizontalAlign"/><attr name="flow_verticalBias"/><attr name="flow_horizontalBias"/><attr name="flow_wrapMode"/><attr name="flow_maxElementsWrap"/><attr name="flow_horizontalGap"/><attr name="flow_verticalGap"/><attr name="flow_firstHorizontalStyle"/><attr name="flow_firstVerticalStyle"/><attr name="flow_firstHorizontalBias"/><attr name="flow_firstVerticalBias"/><attr name="flow_lastHorizontalStyle"/><attr name="flow_lastVerticalStyle"/><attr name="flow_lastHorizontalBias"/><attr name="flow_lastVerticalBias"/><attr name="animate_relativeTo"/><attr name="transitionEasing"/><attr name="pathMotionArc"/><attr name="transitionPathRotate"/><attr name="drawPath"/><attr name="motionProgress"/><attr name="layout_constraintTag"/><attr name="motionStagger"/></declare-styleable>
-    <declare-styleable name="ConstraintLayout_Layout"><attr name="android:orientation"/><attr name="android:minWidth"/><attr name="android:minHeight"/><attr name="android:maxWidth"/><attr name="android:maxHeight"/><attr name="android:visibility"/><attr name="android:elevation"/><attr name="layout_optimizationLevel"/><attr name="layoutDescription"/><attr name="constraintSet"/><attr name="barrierDirection"/><attr name="barrierAllowsGoneWidgets"/><attr name="barrierMargin"/><attr name="constraint_referenced_ids"/><attr name="constraint_referenced_tags"/><attr name="chainUseRtl"/><attr name="flow_horizontalStyle"/><attr name="flow_verticalStyle"/><attr name="flow_wrapMode"/><attr name="flow_maxElementsWrap"/><attr name="flow_horizontalGap"/><attr name="flow_verticalGap"/><attr name="android:padding"/><attr name="android:paddingTop"/><attr name="android:paddingBottom"/><attr name="android:paddingLeft"/><attr name="android:paddingRight"/><attr name="android:paddingStart"/><attr name="android:paddingEnd"/><attr name="flow_verticalAlign"/><attr name="flow_horizontalAlign"/><attr name="flow_verticalBias"/><attr name="flow_horizontalBias"/><attr name="flow_firstHorizontalStyle"/><attr name="flow_firstVerticalStyle"/><attr name="flow_firstHorizontalBias"/><attr name="flow_firstVerticalBias"/><attr name="flow_lastHorizontalStyle"/><attr name="flow_lastVerticalStyle"/><attr name="flow_lastHorizontalBias"/><attr name="flow_lastVerticalBias"/><attr name="layout_constraintCircle"/><attr name="layout_constraintCircleRadius"/><attr name="layout_constraintCircleAngle"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constrainedWidth"/><attr name="layout_constrainedHeight"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="layout_constraintWidth_percent"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintHeight_percent"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/><attr name="layout_constraintTag"/></declare-styleable>
-    <declare-styleable name="ConstraintLayout_placeholder"><attr name="placeholder_emptyVisibility"/><attr name="content"/></declare-styleable>
-    <declare-styleable name="ConstraintSet"><attr format="reference" name="deriveConstraintsFrom"/><attr name="android:orientation"/><attr name="android:id"/><attr name="android:visibility"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="pivotAnchor"/><attr name="android:pivotX"/><attr name="android:pivotY"/><attr name="android:transformPivotX"/><attr name="android:transformPivotY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_marginStart"/><attr name="android:layout_marginBottom"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginEnd"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginRight"/><attr name="layout_constraintCircle"/><attr name="layout_constraintCircleRadius"/><attr name="layout_constraintCircleAngle"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constrainedWidth"/><attr name="layout_constrainedHeight"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="layout_constraintWidth_percent"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintHeight_percent"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/><attr name="barrierDirection"/><attr name="constraint_referenced_ids"/><attr name="constraint_referenced_tags"/><attr name="barrierMargin"/><attr name="android:maxHeight"/><attr name="android:maxWidth"/><attr name="android:minHeight"/><attr name="android:minWidth"/><attr name="barrierAllowsGoneWidgets"/><attr name="chainUseRtl"/><attr name="flow_horizontalStyle"/><attr name="flow_verticalStyle"/><attr name="flow_verticalAlign"/><attr name="flow_horizontalAlign"/><attr name="flow_verticalBias"/><attr name="flow_horizontalBias"/><attr name="flow_wrapMode"/><attr name="flow_maxElementsWrap"/><attr name="flow_horizontalGap"/><attr name="flow_verticalGap"/><attr name="flow_firstHorizontalStyle"/><attr name="flow_firstVerticalStyle"/><attr name="flow_firstHorizontalBias"/><attr name="flow_firstVerticalBias"/><attr name="flow_lastHorizontalStyle"/><attr name="flow_lastVerticalStyle"/><attr name="flow_lastHorizontalBias"/><attr name="flow_lastVerticalBias"/><attr name="animate_relativeTo"/><attr name="transitionEasing"/><attr name="pathMotionArc"/><attr name="transitionPathRotate"/><attr name="motionStagger"/><attr name="drawPath"/><attr name="motionProgress"/><attr name="layout_constraintTag"/></declare-styleable>
+    <declare-styleable name="Constraint">
+        <attr name="android:orientation"/>
+        <attr name="android:id"/>
+
+        <!-- Controls the initial visibility of the view.  -->
+        <attr name="android:visibility"/>
+        <attr name="visibilityMode"/>
+
+        <!-- alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque). -->
+        <attr name="android:alpha"/>
+
+        <!-- base z depth of the view. -->
+        <attr name="android:elevation"/>
+
+        <!-- rotation of the view, in degrees. -->
+        <attr name="android:rotation"/>
+
+        <!-- rotation of the view around the x axis, in degrees. -->
+        <attr name="android:rotationX"/>
+
+        <!-- rotation of the view around the y axis, in degrees. -->
+        <attr name="android:rotationY"/>
+
+        <!-- scale of the view in the x direction. -->
+        <attr name="android:scaleX"/>
+
+        <!-- scale of the view in the y direction. -->
+        <attr name="android:scaleY"/>
+        <attr name="pivotAnchor"/>
+
+        <attr name="android:transformPivotX"/>
+        <attr name="android:transformPivotY"/>
+        <attr name="transformPivotTarget"/>
+
+        <!-- translation in x of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout. -->
+        <attr name="android:translationX"/>
+        <!-- translation in y of the view. This value is added post-layout to the top
+             property of the view, which is set by its layout. -->
+        <attr name="android:translationY"/>
+        <!-- translation in z of the view. This value is added to its elevation. -->
+        <attr name="android:translationZ"/>
+        <!-- Specifies the basic width of the view.  This is a required attribute
+             for any view inside of a containing layout manager.  Its value may
+             be a dimension (such as "12dip") for a constant width or one of
+             the special constants. -->
+        <attr name="android:layout_width"/>
+        <!-- Specifies the basic height of the view.  This is a required attribute
+             for any view inside of a containing layout manager.  Its value may
+             be a dimension (such as "12dip") for a constant height or one of
+             the special constants. -->
+        <attr name="android:layout_height"/>
+        <!--  Specifies extra space on the start side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="layout_constraintWidth"/>
+        <attr name="layout_constraintHeight"/>
+        <attr name="android:layout_marginStart"/>
+        <!--  Specifies extra space on the bottom side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginBottom"/>
+        <!--  Specifies extra space on the top side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginTop"/>
+        <!--  Specifies extra space on the end side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginEnd"/>
+        <!--  Specifies extra space on the left side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive. -->
+        <attr name="android:layout_marginLeft"/>
+        <!--  Specifies extra space on the right side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginRight"/>
+
+        <attr name="layout_constraintCircle"/>
+        <attr name="layout_constraintCircleRadius"/>
+        <attr name="layout_constraintCircleAngle"/>
+
+        <attr name="layout_constraintGuide_begin"/>
+        <attr name="layout_constraintGuide_end"/>
+        <attr name="layout_constraintGuide_percent"/>
+        <attr name="layout_constraintLeft_toLeftOf"/>
+        <attr name="layout_constraintLeft_toRightOf"/>
+        <attr name="layout_constraintRight_toLeftOf"/>
+        <attr name="layout_constraintRight_toRightOf"/>
+        <attr name="layout_constraintTop_toTopOf"/>
+        <attr name="layout_constraintTop_toBottomOf"/>
+        <attr name="layout_constraintBottom_toTopOf"/>
+        <attr name="layout_constraintBottom_toBottomOf"/>
+        <attr name="layout_constraintBaseline_toBaselineOf"/>
+        <attr name="layout_constraintBaseline_toTopOf"/>
+        <attr name="layout_constraintBaseline_toBottomOf"/>
+        <attr name="layout_constraintStart_toEndOf"/>
+        <attr name="layout_constraintStart_toStartOf"/>
+        <attr name="layout_constraintEnd_toStartOf"/>
+        <attr name="layout_constraintEnd_toEndOf"/>
+        <attr name="layout_goneMarginLeft"/>
+        <attr name="layout_goneMarginTop"/>
+        <attr name="layout_goneMarginRight"/>
+        <attr name="layout_goneMarginBottom"/>
+        <attr name="layout_goneMarginStart"/>
+        <attr name="layout_goneMarginEnd"/>
+        <attr name="layout_goneMarginBaseline"/>
+        <attr name="layout_marginBaseline"/>
+        <attr name="layout_constrainedWidth"/>
+        <attr name="layout_constrainedHeight"/>
+        <attr name="layout_constraintHorizontal_bias"/>
+        <attr name="layout_constraintVertical_bias"/>
+        <attr name="layout_constraintWidth_default"/>
+        <attr name="layout_constraintHeight_default"/>
+        <attr name="layout_constraintWidth_min"/>
+        <attr name="layout_constraintWidth_max"/>
+        <attr name="layout_constraintWidth_percent"/>
+        <attr name="layout_constraintHeight_min"/>
+        <attr name="layout_constraintHeight_max"/>
+        <attr name="layout_constraintHeight_percent"/>
+        <attr name="layout_constraintLeft_creator"/>
+        <attr name="layout_constraintTop_creator"/>
+        <attr name="layout_constraintRight_creator"/>
+        <attr name="layout_constraintBottom_creator"/>
+        <attr name="layout_constraintBaseline_creator"/>
+        <attr name="layout_constraintDimensionRatio"/>
+        <attr name="layout_constraintHorizontal_weight"/>
+        <attr name="layout_constraintVertical_weight"/>
+        <attr name="layout_constraintHorizontal_chainStyle"/>
+        <attr name="layout_constraintVertical_chainStyle"/>
+        <attr name="layout_editor_absoluteX"/>
+        <attr name="layout_editor_absoluteY"/>
+        <attr name="layout_wrapBehaviorInParent"/>
+
+        <attr name="barrierDirection"/>
+        <attr name="barrierMargin"/>
+        <attr name="constraint_referenced_ids"/>
+        <attr name="constraint_referenced_tags"/>
+
+        <attr name="android:maxHeight"/>
+        <attr name="android:maxWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:minWidth"/>
+        <attr name="barrierAllowsGoneWidgets"/>
+        <attr name="chainUseRtl"/>
+
+        <attr name="flow_horizontalStyle"/>
+        <attr name="flow_verticalStyle"/>
+        <attr name="flow_verticalAlign"/>
+        <attr name="flow_horizontalAlign"/>
+        <attr name="flow_verticalBias"/>
+        <attr name="flow_horizontalBias"/>
+        <attr name="flow_wrapMode"/>
+        <attr name="flow_maxElementsWrap"/>
+        <attr name="flow_horizontalGap"/>
+        <attr name="flow_verticalGap"/>
+        <!--        <attr name="flow_horizontalSeparator" />-->
+        <!--        <attr name="flow_verticalSeparator" />-->
+
+        <attr name="flow_firstHorizontalStyle"/>
+        <attr name="flow_firstVerticalStyle"/>
+        <attr name="flow_firstHorizontalBias"/>
+        <attr name="flow_firstVerticalBias"/>
+
+        <attr name="flow_lastHorizontalStyle"/>
+        <attr name="flow_lastVerticalStyle"/>
+        <attr name="flow_lastHorizontalBias"/>
+        <attr name="flow_lastVerticalBias"/>
+
+        <attr name="animateRelativeTo"/>
+        <attr name="animateCircleAngleTo"/>
+        <attr name="transitionEasing"/>
+        <attr name="pathMotionArc"/>
+        <attr name="polarRelativeTo"/>
+        <attr name="transitionPathRotate"/>
+        <attr name="drawPath"/>
+        <attr name="motionProgress"/>
+        <attr name="layout_constraintTag"/>
+        <attr name="motionStagger"/>
+        <attr name="quantizeMotionSteps"/>
+        <attr name="quantizeMotionPhase"/>
+        <attr name="quantizeMotionInterpolator"/>
+    </declare-styleable>
+    <declare-styleable name="ConstraintLayout_Layout">
+        <attr name="android:orientation"/>
+        <attr name="android:minWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:maxWidth"/>
+        <attr name="android:maxHeight"/>
+        <attr name="android:visibility"/>
+        <attr name="android:elevation"/>
+
+        <attr name="layout_optimizationLevel"/>
+        <attr name="layoutDescription"/>
+
+        <attr name="constraintSet"/>
+        <attr name="barrierDirection"/>
+        <attr name="barrierAllowsGoneWidgets"/>
+        <attr name="barrierMargin"/>
+        <attr name="constraint_referenced_ids"/>
+        <attr name="constraint_referenced_tags"/>
+        <attr name="chainUseRtl"/>
+
+        <attr name="flow_horizontalStyle"/>
+        <attr name="flow_verticalStyle"/>
+        <attr name="flow_wrapMode"/>
+        <attr name="flow_maxElementsWrap"/>
+        <attr name="flow_horizontalGap"/>
+        <attr name="flow_verticalGap"/>
+        <attr name="android:padding"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:paddingStart"/>
+        <attr name="android:paddingEnd"/>
+        <attr name="flow_verticalAlign"/>
+        <attr name="flow_horizontalAlign"/>
+        <attr name="flow_verticalBias"/>
+        <attr name="flow_horizontalBias"/>
+        <!--        <attr name="flow_horizontalSeparator" />-->
+        <!--        <attr name="flow_verticalSeparator" />-->
+
+        <attr name="flow_firstHorizontalStyle"/>
+        <attr name="flow_firstVerticalStyle"/>
+        <attr name="flow_firstHorizontalBias"/>
+        <attr name="flow_firstVerticalBias"/>
+
+        <attr name="flow_lastHorizontalStyle"/>
+        <attr name="flow_lastVerticalStyle"/>
+        <attr name="flow_lastHorizontalBias"/>
+        <attr name="flow_lastVerticalBias"/>
+
+        <attr name="circularflow_radiusInDP"/>
+        <attr name="circularflow_angles"/>
+        <attr name="circularflow_viewCenter"/>
+        <attr name="circularflow_defaultRadius"/>
+        <attr name="circularflow_defaultAngle"/>
+
+
+        <attr name="layout_constraintCircle"/>
+        <attr name="layout_constraintCircleRadius"/>
+        <attr name="layout_constraintCircleAngle"/>
+
+        <attr name="layout_constraintGuide_begin"/>
+        <attr name="layout_constraintGuide_end"/>
+        <attr name="layout_constraintGuide_percent"/>
+        <attr name="layout_constraintLeft_toLeftOf"/>
+        <attr name="layout_constraintLeft_toRightOf"/>
+        <attr name="layout_constraintRight_toLeftOf"/>
+        <attr name="layout_constraintRight_toRightOf"/>
+        <attr name="layout_constraintTop_toTopOf"/>
+        <attr name="layout_constraintTop_toBottomOf"/>
+        <attr name="layout_constraintBottom_toTopOf"/>
+        <attr name="layout_constraintBottom_toBottomOf"/>
+        <attr name="layout_constraintBaseline_toBaselineOf"/>
+        <attr name="layout_constraintBaseline_toTopOf"/>
+        <attr name="layout_constraintBaseline_toBottomOf"/>
+        <attr name="layout_constraintStart_toEndOf"/>
+        <attr name="layout_constraintStart_toStartOf"/>
+        <attr name="layout_constraintEnd_toStartOf"/>
+        <attr name="layout_constraintEnd_toEndOf"/>
+        <attr name="layout_goneMarginLeft"/>
+        <attr name="layout_goneMarginTop"/>
+        <attr name="layout_goneMarginRight"/>
+        <attr name="layout_goneMarginBottom"/>
+        <attr name="layout_goneMarginStart"/>
+        <attr name="layout_goneMarginEnd"/>
+        <attr name="layout_goneMarginBaseline"/>
+        <attr name="layout_marginBaseline"/>
+        <attr name="layout_constraintWidth"/>
+        <attr name="layout_constraintHeight"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:layout_margin"/>
+        <attr name="android:layout_marginHorizontal"/>
+        <attr name="android:layout_marginVertical"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginBottom"/>
+        <attr name="android:layout_marginStart"/>
+        <attr name="android:layout_marginEnd"/>
+        <attr name="layout_constrainedWidth"/>
+        <attr name="layout_constrainedHeight"/>
+        <attr name="layout_constraintHorizontal_bias"/>
+        <attr name="layout_constraintVertical_bias"/>
+        <attr name="layout_constraintWidth_default"/>
+        <attr name="layout_constraintHeight_default"/>
+        <attr name="layout_constraintWidth_min"/>
+        <attr name="layout_constraintWidth_max"/>
+        <attr name="layout_constraintWidth_percent"/>
+        <attr name="layout_constraintHeight_min"/>
+        <attr name="layout_constraintHeight_max"/>
+        <attr name="layout_constraintHeight_percent"/>
+        <attr name="layout_constraintLeft_creator"/>
+        <attr name="layout_constraintTop_creator"/>
+        <attr name="layout_constraintRight_creator"/>
+        <attr name="layout_constraintBottom_creator"/>
+        <attr name="layout_constraintBaseline_creator"/>
+        <attr name="layout_constraintDimensionRatio"/>
+        <attr name="layout_constraintHorizontal_weight"/>
+        <attr name="layout_constraintVertical_weight"/>
+        <attr name="layout_constraintHorizontal_chainStyle"/>
+        <attr name="layout_constraintVertical_chainStyle"/>
+        <attr name="layout_editor_absoluteX"/>
+        <attr name="layout_editor_absoluteY"/>
+        <attr name="layout_constraintTag"/>
+        <attr name="layout_wrapBehaviorInParent"/>
+    </declare-styleable>
+    <declare-styleable name="ConstraintLayout_ReactiveGuide">
+        <attr format="reference" name="reactiveGuide_valueId"/>
+        <attr format="boolean" name="reactiveGuide_animateChange"/>
+        <attr format="boolean" name="reactiveGuide_applyToAllConstraintSets"/>
+        <attr format="reference" name="reactiveGuide_applyToConstraintSet"/>
+    </declare-styleable>
+    <declare-styleable name="ConstraintLayout_placeholder">
+        <attr name="placeholder_emptyVisibility"/>
+        <attr name="content"/>
+    </declare-styleable>
+    <declare-styleable name="ConstraintOverride">
+        <attr name="android:orientation"/>
+        <attr name="android:id"/>
+        <attr name="motionTarget"/>
+
+        <!-- Controls the initial visibility of the view.  -->
+        <attr name="android:visibility"/>
+        <attr name="visibilityMode"/>
+
+        <!-- alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque). -->
+        <attr name="android:alpha"/>
+
+        <!-- base z depth of the view. -->
+        <attr name="android:elevation"/>
+
+        <!-- rotation of the view, in degrees. -->
+        <attr name="android:rotation"/>
+
+        <!-- rotation of the view around the x axis, in degrees. -->
+        <attr name="android:rotationX"/>
+
+        <!-- rotation of the view around the y axis, in degrees. -->
+        <attr name="android:rotationY"/>
+
+        <!-- scale of the view in the x direction. -->
+        <attr name="android:scaleX"/>
+
+        <!-- scale of the view in the y direction. -->
+        <attr name="android:scaleY"/>
+        <attr name="pivotAnchor"/>
+
+        <attr name="android:transformPivotX"/>
+        <attr name="android:transformPivotY"/>
+        <attr name="transformPivotTarget"/>
+
+        <!-- translation in x of the view. This value is added post-layout to the left
+             property of the view, which is set by its layout. -->
+        <attr name="android:translationX"/>
+        <!-- translation in y of the view. This value is added post-layout to the top
+             property of the view, which is set by its layout. -->
+        <attr name="android:translationY"/>
+        <!-- translation in z of the view. This value is added to its elevation. -->
+        <attr name="android:translationZ"/>
+        <!-- Specifies the basic width of the view.  This is a required attribute
+             for any view inside of a containing layout manager.  Its value may
+             be a dimension (such as "12dip") for a constant width or one of
+             the special constants. -->
+        <attr name="android:layout_width"/>
+        <!-- Specifies the basic height of the view.  This is a required attribute
+             for any view inside of a containing layout manager.  Its value may
+             be a dimension (such as "12dip") for a constant height or one of
+             the special constants. -->
+        <attr name="android:layout_height"/>
+        <!--  Specifies extra space on the start side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="layout_constraintWidth"/>
+        <attr name="layout_constraintHeight"/>
+        <attr name="android:layout_marginStart"/>
+        <!--  Specifies extra space on the bottom side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginBottom"/>
+        <!--  Specifies extra space on the top side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginTop"/>
+        <!--  Specifies extra space on the end side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginEnd"/>
+        <!--  Specifies extra space on the left side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive. -->
+        <attr name="android:layout_marginLeft"/>
+        <!--  Specifies extra space on the right side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginRight"/>
+
+        <attr name="layout_constraintCircleRadius"/>
+        <attr name="layout_constraintCircleAngle"/>
+
+        <attr name="layout_constraintGuide_begin"/>
+        <attr name="layout_constraintGuide_end"/>
+        <attr name="layout_constraintGuide_percent"/>
+
+        <attr name="layout_goneMarginLeft"/>
+        <attr name="layout_goneMarginTop"/>
+        <attr name="layout_goneMarginRight"/>
+        <attr name="layout_goneMarginBottom"/>
+        <attr name="layout_goneMarginStart"/>
+        <attr name="layout_goneMarginEnd"/>
+        <attr name="layout_goneMarginBaseline"/>
+        <attr name="layout_marginBaseline"/>
+        <attr name="layout_constrainedWidth"/>
+        <attr name="layout_constrainedHeight"/>
+        <attr name="layout_constraintHorizontal_bias"/>
+        <attr name="layout_constraintVertical_bias"/>
+        <attr name="layout_constraintWidth_default"/>
+        <attr name="layout_constraintHeight_default"/>
+        <attr name="layout_constraintWidth_min"/>
+        <attr name="layout_constraintWidth_max"/>
+        <attr name="layout_constraintWidth_percent"/>
+        <attr name="layout_constraintHeight_min"/>
+        <attr name="layout_constraintHeight_max"/>
+        <attr name="layout_constraintHeight_percent"/>
+        <attr name="layout_constraintLeft_creator"/>
+        <attr name="layout_constraintTop_creator"/>
+        <attr name="layout_constraintRight_creator"/>
+        <attr name="layout_constraintBottom_creator"/>
+        <attr name="layout_constraintBaseline_creator"/>
+        <attr name="layout_constraintDimensionRatio"/>
+        <attr name="layout_constraintHorizontal_weight"/>
+        <attr name="layout_constraintVertical_weight"/>
+        <attr name="layout_constraintHorizontal_chainStyle"/>
+        <attr name="layout_constraintVertical_chainStyle"/>
+        <attr name="layout_editor_absoluteX"/>
+        <attr name="layout_editor_absoluteY"/>
+        <attr name="layout_wrapBehaviorInParent"/>
+
+        <attr name="barrierDirection"/>
+        <attr name="barrierMargin"/>
+        <attr name="constraint_referenced_ids"/>
+        <attr name="android:maxHeight"/>
+        <attr name="android:maxWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:minWidth"/>
+        <attr name="barrierAllowsGoneWidgets"/>
+        <attr name="chainUseRtl"/>
+
+        <attr name="flow_horizontalStyle"/>
+        <attr name="flow_verticalStyle"/>
+        <attr name="flow_verticalAlign"/>
+        <attr name="flow_horizontalAlign"/>
+        <attr name="flow_verticalBias"/>
+        <attr name="flow_horizontalBias"/>
+        <attr name="flow_wrapMode"/>
+        <attr name="flow_maxElementsWrap"/>
+        <attr name="flow_horizontalGap"/>
+        <attr name="flow_verticalGap"/>
+        <!--        <attr name="flow_horizontalSeparator" />-->
+        <!--        <attr name="flow_verticalSeparator" />-->
+
+        <attr name="flow_firstHorizontalStyle"/>
+        <attr name="flow_firstVerticalStyle"/>
+        <attr name="flow_firstHorizontalBias"/>
+        <attr name="flow_firstVerticalBias"/>
+
+        <attr name="flow_lastHorizontalStyle"/>
+        <attr name="flow_lastVerticalStyle"/>
+        <attr name="flow_lastHorizontalBias"/>
+        <attr name="flow_lastVerticalBias"/>
+
+        <attr name="animateRelativeTo"/>
+        <attr name="animateCircleAngleTo"/>
+        <attr name="transitionEasing"/>
+        <attr name="pathMotionArc"/>
+        <attr name="polarRelativeTo"/>
+        <attr name="transitionPathRotate"/>
+        <attr name="drawPath"/>
+        <attr name="motionProgress"/>
+        <attr name="layout_constraintTag"/>
+        <attr name="motionStagger"/>
+        <attr name="quantizeMotionSteps"/>
+        <attr name="quantizeMotionPhase"/>
+        <attr name="quantizeMotionInterpolator"/>
+    </declare-styleable>
+    <declare-styleable name="ConstraintSet">
+        <attr format="reference" name="deriveConstraintsFrom"/>
+        <attr format="enum" name="constraintRotate">
+            <enum name="none" value="0"/>
+            <enum name="right" value="1"/>
+            <enum name="left" value="2"/>
+            <enum name="x_right" value="3"/>
+            <enum name="x_left" value="4"/>
+        </attr>
+        <attr name="android:orientation"/>
+        <attr name="android:id"/>
+        <attr name="android:visibility"/>
+        <attr name="android:alpha"/>
+        <attr name="android:elevation"/>
+        <attr name="android:rotation"/>
+        <attr name="android:rotationX"/>
+        <attr name="android:rotationY"/>
+        <attr name="android:scaleX"/>
+        <attr name="android:scaleY"/>
+        <attr name="pivotAnchor"/>
+        <attr name="android:pivotX"/>
+        <attr name="android:pivotY"/>
+        <attr name="android:transformPivotX"/>
+        <attr name="android:transformPivotY"/>
+        <attr name="android:translationX"/>
+        <attr name="android:translationY"/>
+        <attr name="android:translationZ"/>
+        <attr name="android:layout_width"/>
+        <!-- Specifies the basic height of the view.  This is a required attribute
+     for any view inside of a containing layout manager.  Its value may
+     be a dimension (such as "12dip") for a constant height or one of
+     the special constants. -->
+        <attr name="android:layout_height"/>
+        <!--  Specifies extra space on the start side of this view.
+      This space is outside this view's bounds.
+      Margin values should be positive.-->
+        <attr name="android:layout_marginStart"/>
+        <!--  Specifies extra space on the bottom side of this view.
+              This space is outside this view's bounds.
+              Margin values should be positive.-->
+        <attr name="android:layout_marginBottom"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginEnd"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginRight"/>
+
+        <attr name="layout_constraintCircle"/>
+        <attr name="layout_constraintCircleRadius"/>
+        <attr name="layout_constraintCircleAngle"/>
+
+        <attr name="layout_constraintGuide_begin"/>
+        <attr name="layout_constraintGuide_end"/>
+        <attr name="layout_constraintGuide_percent"/>
+        <attr name="layout_constraintLeft_toLeftOf"/>
+        <attr name="layout_constraintLeft_toRightOf"/>
+        <attr name="layout_constraintRight_toLeftOf"/>
+        <attr name="layout_constraintRight_toRightOf"/>
+        <attr name="layout_constraintTop_toTopOf"/>
+        <attr name="layout_constraintTop_toBottomOf"/>
+        <attr name="layout_constraintBottom_toTopOf"/>
+        <attr name="layout_constraintBottom_toBottomOf"/>
+        <attr name="layout_constraintBaseline_toBaselineOf"/>
+        <attr name="layout_constraintBaseline_toTopOf"/>
+        <attr name="layout_constraintBaseline_toBottomOf"/>
+        <attr name="layout_constraintStart_toEndOf"/>
+        <attr name="layout_constraintStart_toStartOf"/>
+        <attr name="layout_constraintEnd_toStartOf"/>
+        <attr name="layout_constraintEnd_toEndOf"/>
+        <attr name="layout_goneMarginLeft"/>
+        <attr name="layout_goneMarginTop"/>
+        <attr name="layout_goneMarginRight"/>
+        <attr name="layout_goneMarginBottom"/>
+        <attr name="layout_goneMarginStart"/>
+        <attr name="layout_goneMarginEnd"/>
+        <attr name="layout_goneMarginBaseline"/>
+        <attr name="layout_marginBaseline"/>
+        <attr name="layout_constrainedWidth"/>
+        <attr name="layout_constrainedHeight"/>
+        <attr name="layout_constraintHorizontal_bias"/>
+        <attr name="layout_constraintVertical_bias"/>
+        <attr name="layout_constraintWidth_default"/>
+        <attr name="layout_constraintHeight_default"/>
+        <attr name="layout_constraintWidth_min"/>
+        <attr name="layout_constraintWidth_max"/>
+        <attr name="layout_constraintWidth_percent"/>
+        <attr name="layout_constraintHeight_min"/>
+        <attr name="layout_constraintHeight_max"/>
+        <attr name="layout_constraintHeight_percent"/>
+        <attr name="layout_constraintLeft_creator"/>
+        <attr name="layout_constraintTop_creator"/>
+        <attr name="layout_constraintRight_creator"/>
+        <attr name="layout_constraintBottom_creator"/>
+        <attr name="layout_constraintBaseline_creator"/>
+        <attr name="layout_constraintDimensionRatio"/>
+        <attr name="layout_constraintHorizontal_weight"/>
+        <attr name="layout_constraintVertical_weight"/>
+        <attr name="layout_constraintHorizontal_chainStyle"/>
+        <attr name="layout_constraintVertical_chainStyle"/>
+        <attr name="layout_editor_absoluteX"/>
+        <attr name="layout_editor_absoluteY"/>
+        <attr name="layout_wrapBehaviorInParent"/>
+
+        <attr name="barrierDirection"/>
+        <attr name="constraint_referenced_ids"/>
+        <attr name="constraint_referenced_tags"/>
+        <attr name="barrierMargin"/>
+        <attr name="android:maxHeight"/>
+        <attr name="android:maxWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="android:minWidth"/>
+        <attr name="barrierAllowsGoneWidgets"/>
+        <attr name="chainUseRtl"/>
+
+        <attr name="flow_horizontalStyle"/>
+        <attr name="flow_verticalStyle"/>
+        <attr name="flow_verticalAlign"/>
+        <attr name="flow_horizontalAlign"/>
+        <attr name="flow_verticalBias"/>
+        <attr name="flow_horizontalBias"/>
+        <attr name="flow_wrapMode"/>
+        <attr name="flow_maxElementsWrap"/>
+        <attr name="flow_horizontalGap"/>
+        <attr name="flow_verticalGap"/>
+        <!--        <attr name="flow_horizontalSeparator" />-->
+        <!--        <attr name="flow_verticalSeparator" />-->
+
+        <attr name="flow_firstHorizontalStyle"/>
+        <attr name="flow_firstVerticalStyle"/>
+        <attr name="flow_firstHorizontalBias"/>
+        <attr name="flow_firstVerticalBias"/>
+
+        <attr name="flow_lastHorizontalStyle"/>
+        <attr name="flow_lastVerticalStyle"/>
+        <attr name="flow_lastHorizontalBias"/>
+        <attr name="flow_lastVerticalBias"/>
+
+        <attr name="animateRelativeTo"/>
+        <attr name="animateCircleAngleTo"/>
+
+        <attr name="transitionEasing"/>
+        <attr name="pathMotionArc"/>
+        <attr name="polarRelativeTo"/>
+        <attr name="transitionPathRotate"/>
+        <attr name="motionStagger"/>
+        <attr name="quantizeMotionSteps"/>
+        <attr name="drawPath"/>
+        <attr name="motionProgress"/>
+        <attr name="layout_constraintTag"/>
+
+    </declare-styleable>
     <declare-styleable name="CoordinatorLayout">
         <!-- A reference to an array of integers representing the
              locations of horizontal keylines in dp from the starting edge.
@@ -6527,7 +8205,19 @@
             <flag name="all" value="0x77"/>
         </attr>
     </declare-styleable>
-    <declare-styleable name="CustomAttribute"><attr format="string" name="attributeName"/><attr format="color" name="customColorValue"/><attr format="color" name="customColorDrawableValue"/><attr format="integer" name="customIntegerValue"/><attr format="float" name="customFloatValue"/><attr format="string" name="customStringValue"/><attr format="dimension" name="customDimension"/><attr format="dimension" name="customPixelDimension"/><attr format="boolean" name="customBoolean"/></declare-styleable>
+    <declare-styleable name="CustomAttribute">
+        <attr format="string" name="attributeName"/>
+        <attr format="string" name="methodName"/>
+        <attr format="color" name="customColorValue"/>
+        <attr format="color" name="customColorDrawableValue"/>
+        <attr format="integer" name="customIntegerValue"/>
+        <attr format="float" name="customFloatValue"/>
+        <attr format="string" name="customStringValue"/>
+        <attr format="dimension" name="customDimension"/>
+        <attr format="dimension" name="customPixelDimension"/>
+        <attr format="boolean" name="customBoolean"/>
+        <attr format="reference" name="customReference"/>
+    </declare-styleable>
     <declare-styleable name="DrawerArrowToggle">
         <!-- The drawing color for the bars -->
         <attr format="color" name="color"/>
@@ -6545,6 +8235,10 @@
         <attr format="dimension" name="barLength"/>
         <!-- The thickness (stroke size) for the bar paint -->
         <attr format="dimension" name="thickness"/>
+    </declare-styleable>
+    <declare-styleable name="DrawerLayout">
+        <!-- The height difference between the drawer and the base surface. Only takes effect on API 21 and above -->
+        <attr name="elevation"/>
     </declare-styleable>
     <declare-styleable name="ExtendedFloatingActionButton">
     <!-- Elevation for the ExtendedFloatingActionButton. -->
@@ -6761,7 +8455,42 @@
         <!-- The current color for the offset inside the gradient. -->
         <attr name="android:color"/>
     </declare-styleable>
-    <declare-styleable name="ImageFilterView"><attr format="reference" name="altSrc"/><attr format="float" name="saturation"/><attr format="float" name="brightness"/><attr format="float" name="warmth"/><attr format="float" name="contrast"/><attr format="float" name="crossfade"/><attr format="dimension" name="round"/><attr format="boolean" name="overlay"/><attr format="float" name="roundPercent"/></declare-styleable>
+    <declare-styleable name="Iconics">
+        <attr format="string" name="ico_icon"/>
+        <attr format="color|reference" name="ico_color"/>
+        <attr format="dimension|reference" name="ico_size"/>
+        <attr format="dimension|reference" name="ico_offset_x"/>
+        <attr format="dimension|reference" name="ico_offset_y"/>
+        <attr format="dimension|reference" name="ico_padding"/>
+        <attr format="color|reference" name="ico_contour_color"/>
+        <attr format="dimension|reference" name="ico_contour_width"/>
+        <attr format="color|reference" name="ico_background_color"/>
+        <attr format="dimension|reference" name="ico_corner_radius"/>
+        <attr format="color|reference" name="ico_background_contour_color"/>
+        <attr format="dimension|reference" name="ico_background_contour_width"/>
+        <attr format="dimension|reference" name="ico_shadow_radius"/>
+        <attr format="dimension|reference" name="ico_shadow_dx"/>
+        <attr format="dimension|reference" name="ico_shadow_dy"/>
+        <attr format="color|reference" name="ico_shadow_color"/>
+        <attr format="string" name="ico_animations"/>
+        <attr format="boolean" name="ico_automirror"/>
+    </declare-styleable>
+    <declare-styleable name="ImageFilterView">
+        <attr format="reference" name="blendSrc"/>
+        <attr format="reference" name="altSrc"/>
+        <attr format="float" name="saturation"/>
+        <attr format="float" name="brightness"/>
+        <attr format="float" name="warmth"/>
+        <attr format="float" name="contrast"/>
+        <attr format="float" name="crossfade"/>
+        <attr format="dimension" name="round"/>
+        <attr format="boolean" name="overlay"/>
+        <attr format="float" name="roundPercent"/>
+        <attr format="float" name="imagePanX"/>
+        <attr format="float" name="imagePanY"/>
+        <attr format="float" name="imageZoom"/>
+        <attr format="float" name="imageRotate"/>
+    </declare-styleable>
     <declare-styleable name="Insets">
     <!-- Just adding the parameters that we need for now. We can add others if we need them, but
          ideally we'll be able to use https://github.com/chrisbanes/insetter once it's ready. -->
@@ -6770,19 +8499,221 @@
     <attr format="boolean" name="paddingRightSystemWindowInsets"/>
     <attr format="boolean" name="paddingTopSystemWindowInsets"/>
   </declare-styleable>
-    <declare-styleable name="KeyAttribute"><attr name="framePosition"/><attr name="motionTarget"/><attr name="transitionEasing"/><attr name="curveFit"/><attr name="motionProgress"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:transformPivotX"/><attr name="android:transformPivotY"/><attr name="transitionPathRotate"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/></declare-styleable>
-    <declare-styleable name="KeyCycle"><attr name="motionTarget"/><attr name="curveFit"/><attr name="framePosition"/><attr name="transitionEasing"/><attr name="motionProgress"/><attr name="waveShape"/><attr name="wavePeriod"/><attr name="waveOffset"/><attr name="waveVariesBy"/><attr name="transitionPathRotate"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/></declare-styleable>
-    <declare-styleable name="KeyFrame"/>
-    <declare-styleable name="KeyFramesAcceleration"/>
-    <declare-styleable name="KeyFramesVelocity"/>
-    <declare-styleable name="KeyPosition"><attr format="enum" name="keyPositionType">
+    <declare-styleable name="KeyAttribute">
+        <attr name="framePosition"/>
+        <attr name="motionTarget"/>
+        <attr name="transitionEasing"/>
+        <attr name="curveFit"/>
+
+        <attr name="motionProgress"/>
+
+        <!-- interpolated -->
+        <attr name="android:alpha"/>
+        <attr name="android:elevation"/>
+        <attr name="android:rotation"/>
+        <attr name="android:rotationX"/>
+        <attr name="android:rotationY"/>
+        <attr name="android:transformPivotX"/>
+        <attr name="android:transformPivotY"/>
+        <attr name="transformPivotTarget"/>
+
+        <attr name="transitionPathRotate"/>
+        <attr name="android:scaleX"/>
+        <attr name="android:scaleY"/>
+        <attr name="android:translationX"/>
+        <attr name="android:translationY"/>
+        <attr name="android:translationZ"/>
+    </declare-styleable>
+    <declare-styleable name="KeyCycle">
+        <attr name="motionTarget"/>
+        <attr name="curveFit"/>
+        <attr name="framePosition"/>
+        <attr name="transitionEasing"/>
+        <attr name="motionProgress"/>
+        <attr name="waveShape"/>
+        <attr name="wavePhase"/>
+        <attr name="wavePeriod"/>
+        <attr name="waveOffset"/>
+        <attr name="waveVariesBy"/>
+        <attr name="transitionPathRotate"/>
+        <attr name="android:alpha"/>
+        <attr name="android:elevation"/>
+        <attr name="android:rotation"/>
+        <attr name="android:rotationX"/>
+        <attr name="android:rotationY"/>
+        <attr name="android:scaleX"/>
+        <attr name="android:scaleY"/>
+        <attr name="android:translationX"/>
+        <attr name="android:translationY"/>
+        <attr name="android:translationZ"/>
+    </declare-styleable>
+    <declare-styleable name="KeyFrame">
+
+    </declare-styleable>
+    <declare-styleable name="KeyFramesAcceleration">
+
+    </declare-styleable>
+    <declare-styleable name="KeyFramesVelocity">
+
+    </declare-styleable>
+    <declare-styleable name="KeyPosition">
+        <!-- How this keyframe's deviation for linear path is calculated. -->
+        <attr format="enum" name="keyPositionType">
             <enum name="deltaRelative" value="0"/>
             <enum name="pathRelative" value="1"/>
             <enum name="parentRelative" value="2"/>
-        </attr><attr format="float" name="percentX"/><attr format="float" name="percentY"/><attr format="float" name="percentWidth"/><attr format="float" name="percentHeight"/><attr name="framePosition"/><attr name="motionTarget"/><attr name="transitionEasing"/><attr name="pathMotionArc"/><attr name="curveFit"/><attr name="drawPath"/><attr name="sizePercent"/></declare-styleable>
-    <declare-styleable name="KeyTimeCycle"><attr name="framePosition"/><attr name="motionTarget"/><attr name="transitionEasing"/><attr name="curveFit"/><attr name="waveShape"/><attr name="wavePeriod"/><attr name="motionProgress"/><attr name="waveOffset"/><attr name="waveDecay"/><attr name="android:alpha"/><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="transitionPathRotate"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="android:translationX"/><attr name="android:translationY"/><attr name="android:translationZ"/></declare-styleable>
-    <declare-styleable name="KeyTrigger"><attr name="framePosition"/><attr name="motionTarget"/><attr format="reference" name="triggerReceiver"/><attr format="string" name="onNegativeCross"/><attr format="string" name="onPositiveCross"/><attr format="string" name="onCross"/><attr format="float" name="triggerSlack"/><attr format="reference" name="triggerId"/><attr format="boolean" name="motion_postLayoutCollision"/><attr format="reference" name="motion_triggerOnCollision"/></declare-styleable>
-    <declare-styleable name="Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_marginStart"/><attr name="android:layout_marginBottom"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginEnd"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginRight"/><attr name="layout_constraintCircle"/><attr name="layout_constraintCircleRadius"/><attr name="layout_constraintCircleAngle"/><attr name="layout_constraintGuide_begin"/><attr name="layout_constraintGuide_end"/><attr name="layout_constraintGuide_percent"/><attr name="layout_constraintLeft_toLeftOf"/><attr name="layout_constraintLeft_toRightOf"/><attr name="layout_constraintRight_toLeftOf"/><attr name="layout_constraintRight_toRightOf"/><attr name="layout_constraintTop_toTopOf"/><attr name="layout_constraintTop_toBottomOf"/><attr name="layout_constraintBottom_toTopOf"/><attr name="layout_constraintBottom_toBottomOf"/><attr name="layout_constraintBaseline_toBaselineOf"/><attr name="layout_constraintStart_toEndOf"/><attr name="layout_constraintStart_toStartOf"/><attr name="layout_constraintEnd_toStartOf"/><attr name="layout_constraintEnd_toEndOf"/><attr name="layout_goneMarginLeft"/><attr name="layout_goneMarginTop"/><attr name="layout_goneMarginRight"/><attr name="layout_goneMarginBottom"/><attr name="layout_goneMarginStart"/><attr name="layout_goneMarginEnd"/><attr name="layout_constrainedWidth"/><attr name="layout_constrainedHeight"/><attr name="layout_constraintHorizontal_bias"/><attr name="layout_constraintVertical_bias"/><attr name="layout_constraintWidth_default"/><attr name="layout_constraintHeight_default"/><attr name="layout_constraintWidth_min"/><attr name="layout_constraintWidth_max"/><attr name="android:orientation"/><attr name="layout_constraintWidth_percent"/><attr name="layout_constraintHeight_min"/><attr name="layout_constraintHeight_max"/><attr name="layout_constraintHeight_percent"/><attr name="layout_constraintLeft_creator"/><attr name="layout_constraintTop_creator"/><attr name="layout_constraintRight_creator"/><attr name="layout_constraintBottom_creator"/><attr name="layout_constraintBaseline_creator"/><attr name="layout_constraintDimensionRatio"/><attr name="layout_constraintHorizontal_weight"/><attr name="layout_constraintVertical_weight"/><attr name="layout_constraintHorizontal_chainStyle"/><attr name="layout_constraintVertical_chainStyle"/><attr name="layout_editor_absoluteX"/><attr name="layout_editor_absoluteY"/><attr name="barrierDirection"/><attr name="barrierMargin"/><attr name="constraint_referenced_ids"/><attr name="constraint_referenced_tags"/><attr format="dimension" name="maxHeight"/><attr format="dimension" name="maxWidth"/><attr format="dimension" name="minHeight"/><attr format="dimension" name="minWidth"/><attr name="barrierAllowsGoneWidgets"/><attr name="chainUseRtl"/></declare-styleable>
+        </attr>
+
+        <!--  Percent distance from start to end along X axis (deltaRelative)
+              or along the path in pathRelative. -->
+        <attr format="float" name="percentX"/>
+
+        <!-- Percent distance from start to end along Y axis (deltaRelative)
+             or perpendicular to the path in pathRelative. -->
+        <attr format="float" name="percentY"/>
+
+        <!-- Percent of change in the width. Note if the width does not change this has no effect.This overrides sizePercent. -->
+        <attr format="float" name="percentWidth"/>
+
+        <!-- Percent of change in the width. Note if the width does not change this has no effect.This overrides sizePercent. -->
+        <attr format="float" name="percentHeight"/>
+        <attr name="framePosition"/>
+        <attr name="motionTarget"/>
+        <attr name="transitionEasing"/>
+        <attr name="pathMotionArc"/>
+        <attr name="curveFit"/>
+        <attr name="drawPath"/>
+        <attr name="sizePercent"/>
+    </declare-styleable>
+    <declare-styleable name="KeyTimeCycle">
+        <attr name="framePosition"/>
+        <attr name="motionTarget"/>
+        <attr name="transitionEasing"/>
+        <attr name="curveFit"/>
+        <attr name="waveShape"/>
+        <attr name="wavePeriod"/>
+        <attr name="motionProgress"/>
+        <attr name="waveOffset"/>
+        <attr name="wavePhase"/>
+
+        <!--  The time in milliseconds before the wave decays to less than 1/256-->
+        <attr name="waveDecay"/>
+
+        <!-- interpolated -->
+        <attr name="android:alpha"/>
+        <attr name="android:elevation"/>
+        <attr name="android:rotation"/>
+        <attr name="android:rotationX"/>
+        <attr name="android:rotationY"/>
+        <attr name="transitionPathRotate"/>
+        <attr name="android:scaleX"/>
+        <attr name="android:scaleY"/>
+        <attr name="android:translationX"/>
+        <attr name="android:translationY"/>
+        <attr name="android:translationZ"/>
+    </declare-styleable>
+    <declare-styleable name="KeyTrigger">
+        <attr name="framePosition"/>
+        <attr name="motionTarget"/>
+        <attr format="reference" name="triggerReceiver"/>
+        <attr format="string" name="onNegativeCross"/>
+        <attr format="string" name="onPositiveCross"/>
+        <attr format="string" name="onCross"/>
+        <attr format="reference" name="viewTransitionOnNegativeCross"/>
+        <attr format="reference" name="viewTransitionOnPositiveCross"/>
+        <attr format="reference" name="viewTransitionOnCross"/>
+        <attr format="float" name="triggerSlack"/>
+        <!-- The id of this trigger use when a callback listens for triggers -->
+        <attr format="reference" name="triggerId"/>
+        <attr format="boolean" name="motion_postLayoutCollision"/>
+        <!-- Trigger if the motionTarget collides with the other motionTarget-->
+        <attr format="reference" name="motion_triggerOnCollision"/>
+    </declare-styleable>
+    <declare-styleable name="Layout">
+
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="layout_constraintWidth"/>
+        <attr name="layout_constraintHeight"/>
+
+        <attr name="android:layout_marginStart"/>
+
+        <attr name="android:layout_marginBottom"/>
+
+        <attr name="android:layout_marginTop"/>
+
+        <attr name="android:layout_marginEnd"/>
+
+        <attr name="android:layout_marginLeft"/>
+
+        <attr name="android:layout_marginRight"/>
+
+        <attr name="layout_constraintCircle"/>
+        <attr name="layout_constraintCircleRadius"/>
+        <attr name="layout_constraintCircleAngle"/>
+        <attr name="layout_constraintGuide_begin"/>
+        <attr name="layout_constraintGuide_end"/>
+        <attr name="layout_constraintGuide_percent"/>
+        <attr name="layout_constraintLeft_toLeftOf"/>
+        <attr name="layout_constraintLeft_toRightOf"/>
+        <attr name="layout_constraintRight_toLeftOf"/>
+        <attr name="layout_constraintRight_toRightOf"/>
+        <attr name="layout_constraintTop_toTopOf"/>
+        <attr name="layout_constraintTop_toBottomOf"/>
+        <attr name="layout_constraintBottom_toTopOf"/>
+        <attr name="layout_constraintBottom_toBottomOf"/>
+        <attr name="layout_constraintBaseline_toBaselineOf"/>
+        <attr name="layout_constraintBaseline_toTopOf"/>
+        <attr name="layout_constraintBaseline_toBottomOf"/>
+        <attr name="layout_constraintStart_toEndOf"/>
+        <attr name="layout_constraintStart_toStartOf"/>
+        <attr name="layout_constraintEnd_toStartOf"/>
+        <attr name="layout_constraintEnd_toEndOf"/>
+        <attr name="layout_goneMarginLeft"/>
+        <attr name="layout_goneMarginTop"/>
+        <attr name="layout_goneMarginRight"/>
+        <attr name="layout_goneMarginBottom"/>
+        <attr name="layout_goneMarginStart"/>
+        <attr name="layout_goneMarginEnd"/>
+        <attr name="layout_goneMarginBaseline"/>
+        <attr name="layout_marginBaseline"/>
+        <attr name="layout_constrainedWidth"/>
+        <attr name="layout_constrainedHeight"/>
+        <attr name="layout_constraintHorizontal_bias"/>
+        <attr name="layout_constraintVertical_bias"/>
+        <attr name="layout_constraintWidth_default"/>
+        <attr name="layout_constraintHeight_default"/>
+        <attr name="layout_constraintWidth_min"/>
+        <attr name="layout_constraintWidth_max"/>
+        <attr name="android:orientation"/>
+        <attr name="layout_constraintWidth_percent"/>
+        <attr name="layout_constraintHeight_min"/>
+        <attr name="layout_constraintHeight_max"/>
+        <attr name="layout_constraintHeight_percent"/>
+        <attr name="layout_constraintLeft_creator"/>
+        <attr name="layout_constraintTop_creator"/>
+        <attr name="layout_constraintRight_creator"/>
+        <attr name="layout_constraintBottom_creator"/>
+        <attr name="layout_constraintBaseline_creator"/>
+        <attr name="layout_constraintDimensionRatio"/>
+        <attr name="layout_constraintHorizontal_weight"/>
+        <attr name="layout_constraintVertical_weight"/>
+        <attr name="layout_constraintHorizontal_chainStyle"/>
+        <attr name="layout_constraintVertical_chainStyle"/>
+        <attr name="layout_editor_absoluteX"/>
+        <attr name="layout_editor_absoluteY"/>
+        <attr name="layout_wrapBehaviorInParent"/>
+        <attr name="barrierDirection"/>
+        <attr name="barrierMargin"/>
+        <attr name="constraint_referenced_ids"/>
+        <attr name="constraint_referenced_tags"/>
+        <attr format="dimension" name="maxHeight"/>
+        <attr format="dimension" name="maxWidth"/>
+        <attr format="dimension" name="minHeight"/>
+        <attr format="dimension" name="minWidth"/>
+        <attr name="barrierAllowsGoneWidgets"/>
+        <attr name="chainUseRtl"/>
+    </declare-styleable>
     <declare-styleable name="LinearLayoutCompat">
         <!-- Should the layout be a column or a row?  Use "horizontal"
              for a row, "vertical" for a column.  The default is
@@ -7025,6 +8956,7 @@
     <!-- Tint for the checkbox. -->
     <attr name="buttonTint"/>
   </declare-styleable>
+    <declare-styleable name="MaterialDrawer"><attr format="color|reference" name="material_drawer_window_background"/><attr format="color|reference" name="material_drawer_background"/><attr format="color|reference" name="material_drawer_primary_text"/><attr format="color|reference" name="material_drawer_primary_icon"/><attr format="color|reference" name="material_drawer_secondary_text"/><attr format="color|reference" name="material_drawer_hint_text"/><attr format="color|reference" name="material_drawer_hint_icon"/><attr format="color|reference" name="material_drawer_divider"/><attr format="color|reference" name="material_drawer_selected"/><attr format="color|reference" name="material_drawer_selected_legacy"/><attr format="color|reference" name="material_drawer_selected_text"/><attr format="color|reference" name="material_drawer_header_selection_text"/><attr format="color|reference" name="material_drawer_header_selection_subtext"/><attr format="boolean|reference" name="material_drawer_legacy_style"/></declare-styleable>
     <declare-styleable name="MaterialRadioButton">
     <!-- When set to true, MaterialRadioButton will tint itself according to
       Material Theme colors. When set to false, Material Theme colors will
@@ -7253,22 +9185,104 @@
         <!-- Drawable for the arrow icon indicating a particular item is a submenu. -->
         <attr format="reference" name="subMenuArrow"/>
     </declare-styleable>
-    <declare-styleable name="MockView"><attr format="string" name="mock_label"/><attr format="color" name="mock_labelColor"/><attr format="color" name="mock_labelBackgroundColor"/><attr format="color" name="mock_diagonalsColor"/><attr format="boolean" name="mock_showDiagonals"/><attr format="boolean" name="mock_showLabel"/></declare-styleable>
-    <declare-styleable name="Motion"><attr name="animate_relativeTo"/><attr name="transitionEasing"/><attr name="pathMotionArc"/><attr name="motionPathRotate"/><attr name="motionStagger"/><attr name="drawPath"/></declare-styleable>
-    <declare-styleable name="MotionHelper"><attr format="boolean" name="onShow"/><attr format="boolean" name="onHide"/></declare-styleable>
-    <declare-styleable name="MotionLayout"><attr name="layoutDescription"/><attr format="reference" name="currentState"/><attr name="motionProgress"/><attr format="boolean" name="applyMotionScene"/><attr format="boolean" name="showPaths"/><attr format="enum" name="motionDebug">
+    <declare-styleable name="MockView">
+        <attr format="string" name="mock_label"/>
+        <attr format="color" name="mock_labelColor"/>
+        <attr format="color" name="mock_labelBackgroundColor"/>
+        <attr format="color" name="mock_diagonalsColor"/>
+        <attr format="boolean" name="mock_showDiagonals"/>
+        <attr format="boolean" name="mock_showLabel"/>
+    </declare-styleable>
+    <declare-styleable name="Motion">
+        <attr name="animateRelativeTo"/>
+        <attr name="animateCircleAngleTo"/>
+        <attr name="transitionEasing"/>
+        <attr name="pathMotionArc"/>
+        <attr name="motionPathRotate"/>
+        <attr name="motionStagger"/>
+        <attr name="drawPath"/>
+        <attr name="quantizeMotionSteps"/>
+        <attr name="quantizeMotionPhase"/>
+        <attr name="quantizeMotionInterpolator"/>
+
+    </declare-styleable>
+    <declare-styleable name="MotionEffect">
+        <attr format="integer" name="motionEffect_start"/>
+        <attr format="integer" name="motionEffect_end"/>
+        <attr format="dimension" name="motionEffect_translationX"/>
+        <attr format="dimension" name="motionEffect_translationY"/>
+        <attr format="float" name="motionEffect_alpha"/>
+        <attr format="reference" name="motionEffect_viewTransition"/>
+        <attr format="enum" name="motionEffect_move">
+            <enum name="auto" value="-1"/>
+            <enum name="north" value="0"/>
+            <enum name="south" value="1"/>
+            <enum name="east" value="2"/>
+            <enum name="west" value="3"/>
+        </attr>
+        <attr format="boolean" name="motionEffect_strict"/>
+    </declare-styleable>
+    <declare-styleable name="MotionHelper">
+        <attr format="boolean" name="onShow"/>
+        <attr format="boolean" name="onHide"/>
+    </declare-styleable>
+    <declare-styleable name="MotionLabel">
+        <attr name="android:text"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+        <attr name="android:fontFamily"/>
+        <attr name="android:gravity"/>
+        <attr format="float" name="textPanX"/>
+        <attr format="float" name="textPanY"/>
+        <attr name="android:typeface"/>
+        <attr name="android:shadowRadius"/>
+        <attr name="android:textStyle"/>
+        <attr name="borderRound"/>
+        <attr format="dimension" name="scaleFromTextSize"/>
+        <attr name="borderRoundPercent"/>
+        <attr name="textOutlineThickness"/>
+        <attr name="textOutlineColor"/>
+        <attr format="reference" name="textBackground"/>
+        <attr name="android:autoSizeTextType"/>
+        <attr format="dimension" name="textureWidth"/>
+        <attr format="dimension" name="textureHeight"/>
+        <attr format="integer" name="textureBlurFactor"/>
+        <attr format="float" name="textBackgroundPanX"/>
+        <attr format="float" name="textBackgroundPanY"/>
+        <attr format="float" name="textBackgroundZoom"/>
+        <attr format="float" name="textBackgroundRotate"/>
+        <attr format="enum" name="textureEffect">
+            <enum name="none" value="0"/>
+            <enum name="frost" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MotionLayout">
+        <attr name="layoutDescription"/>
+        <attr format="reference" name="currentState"/>
+        <attr name="motionProgress"/>
+        <attr format="boolean" name="applyMotionScene"/>
+        <attr format="boolean" name="showPaths"/>
+        <attr format="enum" name="motionDebug">
             <enum name="NO_DEBUG" value="0"/>
             <enum name="SHOW_PROGRESS" value="1"/>
             <enum name="SHOW_PATH" value="2"/>
             <enum name="SHOW_ALL" value="3"/>
-        </attr></declare-styleable>
-    <declare-styleable name="MotionScene"><attr name="defaultDuration"/><attr name="layoutDuringTransition"/></declare-styleable>
-    <declare-styleable name="MotionTelltales"><attr format="enum" name="telltales_velocityMode">
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MotionScene">
+        <attr name="defaultDuration"/>
+        <attr name="layoutDuringTransition"/>
+    </declare-styleable>
+    <declare-styleable name="MotionTelltales">
+        <attr format="enum" name="telltales_velocityMode">
             <enum name="layout" value="0"/>
             <enum name="postLayout" value="1"/>
             <enum name="staticPostLayout" value="2"/>
             <enum name="staticLayout" value="3"/>
-        </attr><attr format="color" name="telltales_tailColor"/><attr format="float" name="telltales_tailScale"/></declare-styleable>
+        </attr>
+        <attr format="color" name="telltales_tailColor"/>
+        <attr format="float" name="telltales_tailScale"/>
+    </declare-styleable>
     <declare-styleable name="NavigationBarView">
     <!-- Background tint for the navigation bar. -->
     <attr name="backgroundTint"/>
@@ -7388,25 +9402,60 @@
     -->
     <attr name="shapeAppearanceOverlay"/>
   </declare-styleable>
-    <declare-styleable name="OnClick"><attr name="targetId"/><attr name="clickAction">
+    <declare-styleable name="OnClick">
+        <attr name="targetId"/>
+        <attr name="clickAction">
             <flag name="toggle" value="0x0011"/>
             <flag name="transitionToEnd" value="0x0001"/>
             <flag name="transitionToStart" value="0x0010"/>
             <flag name="jumpToEnd" value="0x100"/>
             <flag name="jumpToStart" value="0x1000"/>
-        </attr></declare-styleable>
-    <declare-styleable name="OnSwipe"><attr format="float" name="dragScale"/><attr format="float" name="dragThreshold"/><attr format="float" name="maxVelocity"/><attr format="float" name="maxAcceleration"/><attr name="dragDirection"/><attr name="touchAnchorId"/><attr name="touchAnchorSide"/><attr format="reference" name="touchRegionId"/><attr format="reference" name="limitBoundsTo"/><attr format="flags" name="nestedScrollFlags">
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="OnSwipe">
+        <attr format="float" name="dragScale"/>
+        <attr format="float" name="dragThreshold"/>
+        <attr format="enum" name="autoCompleteMode">
+            <enum name="continuousVelocity" value="0"/>
+            <enum name="spring" value="1"/>
+        </attr>
+        <attr format="float" name="maxVelocity"/>
+        <attr format="float" name="maxAcceleration"/>
+        <attr format="float" name="springMass"/>
+        <attr format="float" name="springStiffness"/>
+        <attr format="float" name="springDamping"/>
+        <attr format="float" name="springStopThreshold"/>
+        <attr format="flags" name="springBoundary">
+            <flag name="overshoot" value="0"/>
+            <flag name="bounceStart" value="1"/>
+            <flag name="bounceEnd" value="2"/>
+            <flag name="bounceBoth" value="3"/>
+        </attr>
+        <attr name="dragDirection"/>
+        <attr name="touchAnchorId"/>
+        <attr name="touchAnchorSide"/>
+        <attr format="reference" name="rotationCenterId"/>
+        <attr format="reference" name="touchRegionId"/>
+        <attr format="reference" name="limitBoundsTo"/>
+        <attr format="flags" name="nestedScrollFlags">
             <flag name="none" value="0"/>
             <flag name="disablePostScroll" value="1"/>
             <flag name="disableScroll" value="2"/>
-        </attr><attr format="boolean" name="moveWhenScrollAtTop"/><attr format="enum" name="onTouchUp">
+            <flag name="supportScrollUp" value="4"/>
+        </attr>
+        <attr format="boolean" name="moveWhenScrollAtTop"/>
+        <attr format="enum" name="onTouchUp">
             <enum name="autoComplete" value="0"/>
             <enum name="autoCompleteToStart" value="1"/>
             <enum name="autoCompleteToEnd" value="2"/>
             <enum name="stop" value="3"/>
             <enum name="decelerate" value="4"/>
             <enum name="decelerateAndComplete" value="5"/>
-        </attr></declare-styleable>
+            <enum name="neverCompleteToStart" value="6"/>
+            <enum name="neverCompleteToEnd" value="7"/>
+        </attr>
+
+    </declare-styleable>
     <declare-styleable name="PopupWindow">
         <!-- Whether the popup window should overlap its anchor view. -->
         <attr format="boolean" name="overlapAnchor"/>
@@ -7417,7 +9466,19 @@
         <!-- State identifier indicating the popup will be above the anchor. -->
         <attr format="boolean" name="state_above_anchor"/>
     </declare-styleable>
-    <declare-styleable name="PropertySet"><attr name="android:visibility"/><attr name="visibilityMode"/><attr format="float" name="android:alpha"/><attr name="motionProgress"/><attr name="layout_constraintTag"/></declare-styleable>
+    <declare-styleable name="PropertySet">
+        <!-- Controls the initial visibility of the view.  -->
+        <attr name="android:visibility"/>
+        <attr name="visibilityMode"/>
+
+        <!-- alpha property of the view, as a value between 0 (completely transparent) and 1
+             (completely opaque). -->
+        <attr name="android:alpha"/>
+
+        <!-- calls setProgress(float) on the view if the method exist -->
+        <attr name="motionProgress"/>
+        <attr name="layout_constraintTag"/>
+    </declare-styleable>
     <declare-styleable name="RadialViewGroup">
 
     <!-- Radius indicating how far away from the center of the group the
@@ -7469,6 +9530,12 @@
     <declare-styleable name="ScrimInsetsFrameLayout">
     <attr format="color|reference" name="insetForeground"/>
   </declare-styleable>
+    <declare-styleable name="ScrimInsetsRelativeLayout">
+        <attr format="reference|color" name="sirl_insetForeground"/>
+    </declare-styleable>
+    <declare-styleable name="ScrimInsetsView">
+        <attr format="reference|color" name="siv_insetForeground"/>
+    </declare-styleable>
     <declare-styleable name="ScrollingViewBehavior_Layout">
     <!-- The amount that the scrolling view should overlap the bottom of any AppBarLayout -->
     <attr format="dimension" name="behavior_overlapTop"/>
@@ -7665,7 +9732,10 @@
         <!-- Reference to an array resource that will populate the Spinner. -->
         <attr name="android:entries"/>
     </declare-styleable>
-    <declare-styleable name="State"><attr name="android:id"/><attr format="reference" name="constraints"/></declare-styleable>
+    <declare-styleable name="State">
+        <attr name="android:id"/>
+        <attr format="reference" name="constraints"/>
+    </declare-styleable>
     <declare-styleable name="StateListDrawable">
         <!-- Indicates whether the drawable should be initially visible. -->
         <attr name="android:visible"/>
@@ -7698,7 +9768,9 @@
              given, the drawable must be defined by the first child tag. -->
         <attr name="android:drawable"/>
     </declare-styleable>
-    <declare-styleable name="StateSet"><attr format="reference" name="defaultState"/></declare-styleable>
+    <declare-styleable name="StateSet">
+        <attr format="reference" name="defaultState"/>
+    </declare-styleable>
     <declare-styleable name="SwitchCompat">
         <!-- Drawable to use as the "thumb" that switches back and forth. -->
         <attr name="android:thumb"/>
@@ -7900,6 +9972,22 @@
         <attr name="android:shadowRadius"/>
         <!-- OpenType font variation settings, available aftear api 26. -->
         <attr name="fontVariationSettings"/>
+    </declare-styleable>
+    <declare-styleable name="TextEffects">
+        <attr name="android:text"/>
+        <attr name="android:textSize"/>
+        <attr name="android:fontFamily"/>
+        <attr name="android:typeface"/>
+        <attr name="android:shadowColor"/>
+        <attr name="android:shadowDx"/>
+        <attr name="android:shadowDy"/>
+        <attr name="android:shadowRadius"/>
+        <attr name="android:textStyle"/>
+        <attr format="color" name="textFillColor"/>
+        <attr name="textOutlineThickness"/>
+        <attr name="textOutlineColor"/>
+        <attr name="borderRound"/>
+        <attr name="borderRoundPercent"/>
     </declare-styleable>
     <declare-styleable name="TextInputEditText">
     <!-- Whether the TextInputEditText should use the TextInputLayout's focused
@@ -8249,25 +10337,89 @@
     <attr name="android:padding"/>
     <attr format="color" name="backgroundTint"/>
   </declare-styleable>
-    <declare-styleable name="Transform"><attr name="android:elevation"/><attr name="android:rotation"/><attr name="android:rotationX"/><attr name="android:rotationY"/><attr name="android:scaleX"/><attr name="android:scaleY"/><attr name="android:transformPivotX"/><attr name="android:transformPivotY"/><attr format="dimension" name="android:translationX"/><attr format="dimension" name="android:translationY"/><attr format="dimension" name="android:translationZ"/></declare-styleable>
-    <declare-styleable name="Transition"><attr name="android:id"/><attr format="reference" name="constraintSetStart"/><attr format="reference" name="constraintSetEnd"/><attr format="boolean" name="transitionDisable"/><attr name="layoutDuringTransition"/><attr name="pathMotionArc"/><attr format="enum" name="autoTransition">
+    <declare-styleable name="Transform">
+        <!-- base z depth of the view. -->
+        <attr name="android:elevation"/>
+
+        <!-- rotation of the view, in degrees. -->
+        <attr name="android:rotation"/>
+
+        <!-- rotation of the view around the x axis, in degrees. -->
+        <attr name="android:rotationX"/>
+
+        <!-- rotation of the view around the y axis, in degrees. -->
+        <attr name="android:rotationY"/>
+
+        <!-- scale of the view in the x direction. -->
+        <attr name="android:scaleX"/>
+
+        <!-- scale of the view in the y direction. -->
+        <attr name="android:scaleY"/>
+
+        <!--  x location of the pivot point around which the view will rotate and scale.
+     This xml attribute sets the pivotX property of the View. -->
+        <attr name="android:transformPivotX"/>
+
+        <!--   y location of the pivot point around which the view will rotate and scale.
+             This xml attribute sets the pivotY property of the View. -->
+        <attr name="android:transformPivotY"/>
+
+        <attr name="transformPivotTarget"/>
+
+        <!-- translation in x of the view. This value is added post-layout to the left
+           property of the view, which is set by its layout. -->
+        <attr format="dimension" name="android:translationX"/>
+
+        <!-- translation in y of the view. This value is added post-layout to the top
+       property of the view, which is set by its layout. -->
+        <attr format="dimension" name="android:translationY"/>
+
+        <!-- translation in z of the view. This value is added to its elevation. -->
+        <attr format="dimension" name="android:translationZ"/>
+
+    </declare-styleable>
+    <declare-styleable name="Transition">
+        <attr name="android:id"/>
+        <attr format="reference" name="constraintSetStart"/>
+        <attr format="reference" name="constraintSetEnd"/>
+        <attr name="transitionDisable"/>
+        <attr name="layoutDuringTransition"/>
+
+        <attr name="pathMotionArc"/>
+        <attr format="enum" name="autoTransition">
             <enum name="none" value="0"/>
             <enum name="jumpToStart" value="1"/>
             <enum name="jumpToEnd" value="2"/>
             <enum name="animateToStart" value="3"/>
             <enum name="animateToEnd" value="4"/>
-        </attr><attr format="string|reference|enum" name="motionInterpolator">
+        </attr>
+        <attr format="string|reference|enum" name="motionInterpolator">
             <enum name="easeInOut" value="0"/>
             <enum name="easeIn" value="1"/>
             <enum name="easeOut" value="2"/>
             <enum name="linear" value="3"/>
-            <enum name="bounce" value="5"/>
-        </attr><attr name="duration"/><attr format="float" name="staggered"/><attr name="transitionFlags">
+            <enum name="bounce" value="4"/>
+            <enum name="overshoot" value="5"/>
+            <enum name="anticipate" value="6"/>
+        </attr>
+
+        <attr name="duration"/>
+        <attr format="float" name="staggered"/>
+
+        <attr name="transitionFlags">
             <flag name="none" value="0"/>
             <flag name="beginOnFirstDraw" value="1"/>
+            <flag name="disableIntraAutoTransition" value="2"/>
             />
-        </attr></declare-styleable>
-    <declare-styleable name="Variant"><attr format="dimension" name="region_widthLessThan"/><attr format="dimension" name="region_widthMoreThan"/><attr format="dimension" name="region_heightLessThan"/><attr format="dimension" name="region_heightMoreThan"/><attr name="constraints"/></declare-styleable>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="Variant">
+        <attr format="dimension" name="region_widthLessThan"/>
+        <attr format="dimension" name="region_widthMoreThan"/>
+        <attr format="dimension" name="region_heightLessThan"/>
+        <attr format="dimension" name="region_heightMoreThan"/>
+        <attr name="constraints"/>
+    </declare-styleable>
     <declare-styleable name="View">
         <!-- Sets the padding, in pixels, of the start edge; see {@link android.R.attr#padding}. -->
         <attr format="dimension" name="paddingStart"/>
@@ -8324,5 +10476,25 @@
         <!-- Overrides the id of the inflated View with this value. -->
         <attr name="android:inflatedId"/>
         <attr name="android:id"/>
+    </declare-styleable>
+    <declare-styleable name="ViewTransition">
+        <attr name="android:id"/>
+        <attr name="motionTarget"/>
+        <attr name="viewTransitionMode"/>
+        <attr name="onStateTransition"/>
+        <attr name="duration"/>
+        <attr format="integer" name="upDuration"/>
+        <attr name="transitionDisable"/>
+        <attr name="pathMotionArc"/>
+        <attr name="motionInterpolator"/>
+        <attr format="reference" name="SharedValueId"/>
+        <attr format="integer" name="SharedValue"/>
+        <attr format="reference" name="setsTag"/>
+        <attr format="reference" name="clearsTag"/>
+        <attr format="reference" name="ifTagSet"/>
+        <attr format="reference" name="ifTagNotSet"/>
+    </declare-styleable>
+    <declare-styleable name="include">
+        <attr name="constraintSet"/>
     </declare-styleable>
 </resources>

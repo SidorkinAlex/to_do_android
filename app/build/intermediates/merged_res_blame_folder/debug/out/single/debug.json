@@ -32,6 +32,10 @@
         "source": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
+        "merged": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/build/intermediates/res/merged/debug/drawable_header.xml.flat",
+        "source": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/res/drawable/header.xml"
+    },
+    {
         "merged": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
     },

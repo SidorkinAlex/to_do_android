@@ -1,0 +1,6 @@
+suitecrm/com/todo/databinding/ActivityMainBinding.java
+ suitecrm.com.todo.databinding.ActivityMainBinding
+suitecrm/com/todo/databinding/FragmentSettingsBinding.java
+ suitecrm.com.todo.databinding.FragmentSettingsBinding
+suitecrm/com/todo/BuildConfig.java
+ suitecrm.com.todo.BuildConfig

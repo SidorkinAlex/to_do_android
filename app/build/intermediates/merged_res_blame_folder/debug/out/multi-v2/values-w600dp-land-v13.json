@@ -4,7 +4,7 @@
             "outputFile": "/home/alex/dev/AndroidProjects/ToDoCHecklist/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w600dp-land-v13/values-w600dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/home/alex/.gradle/caches/transforms-2/files-2.1/a4e5d8b5dfed0ba123133c126e182d02/material-1.4.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+                    "source": "/home/alex/.gradle/caches/transforms-2/files-2.1/2de5a6b17c59cfa51c3f364f5a8e2176/material-1.4.0/res/values-w600dp-land-v13/values-w600dp-land-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

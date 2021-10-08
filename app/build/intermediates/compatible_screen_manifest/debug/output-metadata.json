@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "suitecrm.com.todochecklist",
+  "applicationId": "suitecrm.com.todo",
   "variantName": "debug",
   "elements": []
 }

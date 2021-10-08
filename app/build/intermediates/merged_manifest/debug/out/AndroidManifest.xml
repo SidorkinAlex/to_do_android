@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="suitecrm.com.todochecklist"
+    package="suitecrm.com.todo"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -18,14 +18,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.ToDoCHecklist" >
-        <activity android:name="suitecrm.com.todochecklist.MainActivity" >
+        android:theme="@style/Theme.ToDo" >
+        <activity android:name="suitecrm.com.todo.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="com.mikepenz.iconics.IconicsContentProvider"
+            android:authorities="suitecrm.com.todo.iconics.core.provider"
+            android:enabled="@bool/is_iconics_content_provider_enabled"
+            android:exported="false"
+            android:initOrder="100" />
     </application>
 
 </manifest>

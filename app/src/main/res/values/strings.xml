@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">ToDoCHecklist</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="Settings_app_settings">App Settings</string>
-    <string name="settings_url">Set URL</string>
-    <string name="settings_user_login_settings">Login:</string>
-    <string name="settings_user_pass_settings">Password:</string>
-    <string name="button_save">Save</string>
-    <string name="button_clear">Clear</string>
+    <string name="app_name">ToDo</string>
+    <string name="Settings_app_settings">Настройки приложения</string>
+    <string name="settings_url">URL</string>
+    <string name="settings_user_login_settings">Логин</string>
+    <string name="settings_user_pass_settings">Пароль</string>
+    <string name="button_save">Сохранить</string>
+    <string name="button_clear">Очистить</string>
 </resources>
