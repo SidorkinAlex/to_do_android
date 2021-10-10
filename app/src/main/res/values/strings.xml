@@ -6,4 +6,6 @@
     <string name="settings_user_pass_settings">Пароль</string>
     <string name="button_save">Сохранить</string>
     <string name="button_clear">Очистить</string>
+    <string name="main_toolbar_checklist">Чеклист</string>
+    <string name="main_toolbar_settings">Настройки Приложения</string>
 </resources>

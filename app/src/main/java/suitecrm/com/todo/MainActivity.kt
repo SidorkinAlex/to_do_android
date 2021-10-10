@@ -37,28 +37,34 @@ class MainActivity : AppCompatActivity() {
 
     private fun createDawer() {
         mDriver = DrawerBuilder()
-                .withActivity(this)
-                .withToolbar(mToolbar)
-                .withActionBarDrawerToggle(true)
-                .withSelectedItem(-1)
-                .withAccountHeader(mHeader)
-                .addDrawerItems(
-                        PrimaryDrawerItem().withIdentifier(100)
-                                .withIconTintingEnabled(true)
-                                .withName("Основная Группа")
-                                .withSelectable(false)
-                ).build()
+            .withActivity(this)
+            .withToolbar(mToolbar)
+            .withActionBarDrawerToggle(true)
+            .withSelectedItem(-1)
+            .withAccountHeader(mHeader)
+            .addDrawerItems(
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName(R.string.main_toolbar_checklist)
+                    .withSelectable(false)
+                    .withIcon(R.drawable.checklist),
+                PrimaryDrawerItem().withIdentifier(200)
+                    .withIconTintingEnabled(true)
+                    .withName(R.string.main_toolbar_settings)
+                    .withSelectable(false)
+                    .withIcon(R.drawable.checklist)
+            ).build()
     }
 
     private fun createHeader() {
         mHeader = AccountHeaderBuilder()
-                .withActivity(this)
-                .withHeaderBackground(R.drawable.header)
-                .addProfiles(
-                        ProfileDrawerItem()
-                                .withName("Alex Sidorkins")
-                                .withEmail("test@test.ru")
-                ).build()
+            .withActivity(this)
+            .withHeaderBackground(R.drawable.header)
+            .addProfiles(
+                ProfileDrawerItem()
+                    .withName("Alex Sidorkins")
+                    .withEmail("test@test.ru")
+            ).build()
     }
 
 
