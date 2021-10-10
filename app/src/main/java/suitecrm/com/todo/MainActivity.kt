@@ -3,6 +3,8 @@ package suitecrm.com.todo
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -10,6 +12,7 @@ import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import suitecrm.com.todo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -52,8 +55,19 @@ class MainActivity : AppCompatActivity() {
                     .withIconTintingEnabled(true)
                     .withName(R.string.main_toolbar_settings)
                     .withSelectable(false)
-                    .withIcon(R.drawable.checklist)
-            ).build()
+                    .withIcon(R.drawable.edit_tool)
+            ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+                override fun onItemClick(
+                    view: View?,
+                    position: Int,
+                    drawerItem: IDrawerItem<*>
+                ): Boolean {
+                    Toast.makeText(applicationContext, position.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    return false
+                }
+            })
+            .build()
     }
 
     private fun createHeader() {
