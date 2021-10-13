@@ -1,6 +1,5 @@
 package suitecrm.com.todo
 
-import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -34,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLogic() {
         setSupportActionBar(mToolbar)
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.data_container,DoListFragment()).commit()
         createHeader()
         createDawer()
     }
