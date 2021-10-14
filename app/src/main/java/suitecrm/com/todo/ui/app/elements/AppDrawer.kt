@@ -9,10 +9,10 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
-import suitecrm.com.todo.DoListFragment
 import suitecrm.com.todo.MainActivity
 import suitecrm.com.todo.R
-import suitecrm.com.todo.SettingsFragment
+import suitecrm.com.todo.fragments.DoListFragment
+import suitecrm.com.todo.fragments.SettingsFragment
 
 class AppDrawer(
     var mainActivity: MainActivity,

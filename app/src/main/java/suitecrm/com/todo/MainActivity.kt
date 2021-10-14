@@ -3,9 +3,8 @@ package suitecrm.com.todo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
-import com.mikepenz.materialdrawer.AccountHeader
-import com.mikepenz.materialdrawer.Drawer
 import suitecrm.com.todo.databinding.ActivityMainBinding
+import suitecrm.com.todo.fragments.DoListFragment
 import suitecrm.com.todo.ui.app.elements.AppDrawer
 
 class MainActivity : AppCompatActivity() {
