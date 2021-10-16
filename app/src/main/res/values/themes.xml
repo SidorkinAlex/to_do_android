@@ -32,4 +32,16 @@
         <item name="material_drawer_header_selection_subtext">@color/material_drawer_dark_header_selection_subtext</item>
         <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
     </style>
+    <style name="MainCheckBox" parent="MaterialDrawerTheme.Light">
+        <item name="buttonTint">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>   <!-- normal border color change as you wish -->
+        <item name="colorControlActivated">@color/material_drawer_hint_text</item> <!-- activated color change as you wish -->
+        <item name="android:textColor">@color/colorPrimary</item> <!-- checkbox text color -->
+        <item name="android:textSize">20dp</item>
+    </style>
+    <style name="TodoTextViewMain" parent="MaterialDrawerTheme.Light">
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
 </resources>
