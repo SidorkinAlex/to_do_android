@@ -10,7 +10,7 @@ import suitecrm.com.todo.R
 
  open class BaseFragment(var layout:Int) : Fragment() {
 
-    private lateinit var mRootView: View
+    protected lateinit var mRootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
