@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 <!--    <style name="Theme.ToDo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
-    <style name="Theme.ToDoLight" parent="MaterialDrawerTheme">
+    <style name="Theme.ToDoLight" parent="MaterialDrawerTheme.Light">
         <!-- Primary brand color. -->
 
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -32,17 +32,26 @@
         <item name="material_drawer_header_selection_subtext">@color/material_drawer_dark_header_selection_subtext</item>
         <item name="material_drawer_legacy_style">false</item> <!-- Enables legacy Material 1 style -->
     </style>
-    <style name="MainCheckBox" parent="MaterialDrawerTheme.Light">
-        <item name="buttonTint">@color/black</item>
-        <item name="colorControlNormal">@color/black</item>   <!-- normal border color change as you wish -->
-        <item name="colorControlActivated">@color/material_drawer_hint_text</item> <!-- activated color change as you wish -->
+    <style name="MainCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/colorPrimary</item>
+        <item name="android:colorControlNormal">@color/black</item>   <!-- normal border color change as you wish -->
+        <item name="android:colorControlActivated">@color/material_drawer_hint_text</item> <!-- activated color change as you wish -->
         <item name="android:textColor">@color/colorPrimary</item> <!-- checkbox text color -->
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:background">?android:attr/listChoiceIndicatorMultiple</item>-->
     </style>
     <style name="TodoTextViewMain" parent="MaterialDrawerTheme.Light">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginTop">0dp</item>
         <item name="android:layout_marginStart">10dp</item>
+    </style>
+    <style name="TodoLinerRow" parent="MaterialDrawerTheme.Light">
+        <item name="android:background">@drawable/border</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:layout_marginStart">50dp</item>-->
     </style>
 </resources>
