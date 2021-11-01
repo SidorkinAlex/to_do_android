@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import suitecrm.com.todo.R
@@ -32,13 +33,14 @@ class DoListFragment : BaseFragment(R.layout.fragment_do_list) {
         super.onResume()
         val root = requireView().findViewById<LinearLayout>(R.id.mainToDoListDiv)
         for (i in 1..100) {
-            if (activity?.applicationContext != null) {
-                var view1: LinearLayout = DoListViewBuilder()
-                        .createRowChecklistView(root.context)
-                //var view = LayoutInflater.from(this.context).inflate(R.layout.to_do_row, root,false)
-                view1.id = (120 + i)
-                root.addView(view1)
-            }
+
+            var view1: LinearLayout = DoListViewBuilder()
+                    .createRowChecklistView(root.context)
+            //var view = LayoutInflater.from(this.context).inflate(R.layout.to_do_row, root,false)
+            view1.id = (120 + i)
+            root.addView(view1)
+
+
         }
     }
 
