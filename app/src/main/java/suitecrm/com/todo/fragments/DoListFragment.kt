@@ -32,7 +32,7 @@ class DoListFragment : BaseFragment(R.layout.fragment_do_list) {
     override fun onResume() {
         super.onResume()
         val root = requireView().findViewById<LinearLayout>(R.id.mainToDoListDiv)
-        for (i in 1..100) {
+        for (i in 1..10) {
 
             var view1: LinearLayout = DoListViewBuilder()
                     .createRowChecklistView(root.context)

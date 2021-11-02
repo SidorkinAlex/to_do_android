@@ -3,6 +3,7 @@ package suitecrm.com.todo.ui.app.elements
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
@@ -25,11 +26,17 @@ class DoListViewBuilder {
 
         checkBox.isChecked = false
         checkBox.setOnClickListener {
-            var coreList = (row.parent)
-            if (coreList is LinearLayout) {
-                coreList.removeViewInLayout(row)
+            if (it is CheckBox) {
+                Handler().postDelayed({
+                    if (it.isChecked ) {
+                        var coreList = (row.parent)
+                        if (coreList is LinearLayout) {
+                            coreList.removeViewInLayout(row)
+                            coreList.requestLayout()
+                        }
+                    }
+                }, 5000)
             }
-            coreList.requestLayout()
         }
 
         val textView: TextView = TextView(context, null, 0, R.style.TodoTextViewMain)
