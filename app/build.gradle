@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -16,6 +16,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        annotationProcessorOptions {
+            arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+        }
     }
 
     buildTypes {
@@ -47,6 +50,8 @@ dependencies {
     //required support lib modules
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.annotation:annotation:1.2.0"
+    implementation("androidx.room:room-runtime:2.3.0")
+    annotationProcessor("androidx.room:room-compiler:2.3.0")
 
 // Add for NavController support
     //implementation "com.mikepenz:materialdrawer-nav:1.0.0"
