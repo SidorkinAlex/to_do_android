@@ -17,10 +17,10 @@ interface TaskDaoInterface {
     fun getTaskById(id: String): List<Task>
 
     @Query("SELECT * FROM task WHERE `isChecked` = 0 AND `isDeleted`= 0")
-    fun getNonClosedTask(): List<Task>
+    fun getNonSuccessTask(): List<Task>
 
     @Query("SELECT * FROM task WHERE `isChecked` = 1 AND `isDeleted`= 0")
-    fun getClosedTask(): List<Task>
+    fun getSuccessTask(): List<Task>
 
     @Query("SELECT * FROM task WHERE `isDeleted`= 0" )
     fun getDeletedTask(): List<Task>
