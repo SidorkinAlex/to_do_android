@@ -3,12 +3,15 @@ package suitecrm.com.todo.fragments
 import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import suitecrm.com.todo.R
+import suitecrm.com.todo.databinding.FragmentDoListBinding
 import suitecrm.com.todo.ui.app.elements.DoListViewBuilder
 
 
@@ -42,6 +45,11 @@ class DoListFragment : BaseFragment(R.layout.fragment_do_list) {
 
 
         }
+        setHasOptionsMenu(true)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.do_list_menu, menu)
+
+    }
 }

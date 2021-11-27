@@ -12,11 +12,13 @@ import suitecrm.com.todo.R
 
     protected lateinit var mRootView: View
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layout,container,false)
+        mRootView = inflater.inflate(layout,container,false)
+        return mRootView
     }
 
 }
