@@ -9,10 +9,16 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuView
+import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.fragment.app.Fragment
+import com.mikepenz.materialdrawer.util.ifNotNull
 import suitecrm.com.todo.R
 import suitecrm.com.todo.databinding.FragmentDoListBinding
 import suitecrm.com.todo.ui.app.elements.DoListViewBuilder
+import suitecrm.com.todo.ui.app.elements.ToDoListActionMenuController
+import java.lang.Exception
 
 
 /**
@@ -50,6 +56,12 @@ class DoListFragment : BaseFragment(R.layout.fragment_do_list) {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.do_list_menu, menu)
-
-    }
+        val mC = ToDoListActionMenuController()
+        activity.ifNotNull {
+            mC.initMenuEvents(menu, activity as AppCompatActivity)
+        }
+       }
 }
+
+
+

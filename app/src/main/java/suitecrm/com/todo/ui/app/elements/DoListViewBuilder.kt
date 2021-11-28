@@ -42,7 +42,7 @@ class DoListViewBuilder {
         val textView: TextView = TextView(context, null, 0, R.style.TodoTextViewMain)
         textView.layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT)
-        textView.text = "какой то текс созданный программно"
+        textView.text = "какой то текст созданный программно"
         row.addView(checkBox)
         row.addView(textView)
         return row

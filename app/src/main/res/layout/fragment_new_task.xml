@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10pt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/edit_title_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_title_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_title_input"
+        style="@style/ToDoEditFragmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edit_title_description"
+        android:inputType="text" />
+    <TextView
+        android:id="@+id/edit_description_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_task_description_title"
+        app:layout_constraintTop_toBottomOf="@id/edit_title_input"/>
+
+    <EditText
+        android:id="@+id/edit_description_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="8"
+        app:layout_constraintTop_toBottomOf="@id/edit_description_title"
+        android:inputType="textMultiLine"
+        android:minLines="4"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/edit_save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edit_description_input"
+        android:text="@string/button_save"
+        style="@style/Widget.AppCompat.Button"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/edit_cancel_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edit_save_button"
+        android:text="@string/edit_button_cancel"
+        style="@style/Widget.AppCompat.Button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_task">Добавить задачу</string>
+    <string name="edit_task_description_title">введите подробное описание задачи</string>
+    <string name="edit_title_description">Наименование Задачи</string>
+    <string name="edit_button_cancel">Отменить</string>
 </resources>

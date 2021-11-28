@@ -10,7 +10,7 @@
                 android:id="@+id/add_task"
                 android:icon="@drawable/ic_action_menu_task_add"
                 android:title="@string/add_task"
-                app:showAsAction="never" />
+                app:showAsAction="ifRoom" />
         </menu>
     </item>
 </menu>
